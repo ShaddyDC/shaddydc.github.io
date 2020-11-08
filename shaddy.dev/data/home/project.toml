@@ -1,0 +1,37 @@
+[[list]]
+    title = "osuWebCollections"
+    image = "https://camo.githubusercontent.com/01ce139508afa64af4d7a42a3f907e30689dfb13/68747470733a2f2f692e696d6775722e636f6d2f644d54333465512e6a7067"
+    text = """
+        Allows you to add or remove beatmaps from your local collections file from the osu website. 
+        https://github.com/ShaddyDC/osuWebCollections
+    """
+[[list]]
+    title = "osu!replayer"
+    image = "https://picsum.photos/400/200"
+    text = """
+        WIP tool to watch and analyse replays.
+        Try it on https://replay.shaddy.dev
+    """
+[[list]]
+    title = "osu!reader"
+    image = "https://picsum.photos/400/200"
+    text = """
+        Powers osu!replayer. 
+        Parsing and logic(soon) of osu!replayer with python bindings(soon).
+        https://github.com/ShaddyDC/osu_reader
+    """
+[[list]]
+    title = "osu-api-proxy"
+    image = "https://picsum.photos/400/200"
+    text = """
+        Powers osu!replayer. 
+        Allows the use of osu's api v2 and access from the browser.
+        https://github.com/ShaddyDC/osu-api-proxy
+    """
+[[list]]
+    title = "osu!top"
+    image = "https://i.imgur.com/uMzytXY.png"
+    text = """
+        Linux-capable beatmap recommendation tool.
+        https://github.com/ShaddyDC/osu-top
+    """

@@ -1,0 +1,24 @@
+title = "Hello world!"
+
+text = """
+I'm a university student from Germany. 
+I'm showing off all my unfinished projects off here to display my commitment issues.
+This site is using the [Simple Intro](https://themes.gohugo.io/simpleintro) theme.
+# TODO: Make this site good
+"""
+
+[[link]]
+    icon = "fab fa-github"
+    url = "https://github.com/ShaddyDC"
+# [[link]]
+#     icon = "fab fa-linkedin"
+#     url = "#"
+# [[link]]
+#     icon = "fas fa-envelope"
+#     url = "#"
+# [[link]]
+#     icon = "fab fa-instagram"
+#     url = "#"
+# [[link]]
+#     icon = "fab fa-facebook"
+#     url = "#"

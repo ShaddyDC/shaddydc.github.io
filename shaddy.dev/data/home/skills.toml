@@ -1,0 +1,25 @@
+[[list]]
+    name = "C++"
+    icon = "https://devicons.github.io/devicon/devicon.git/icons/cplusplus/cplusplus-original.svg"
+    text = """
+        I know some modern C++ + webgl.
+    """
+[[list]]
+    name = "Data Science"
+    icon = "https://devicons.github.io/devicon/devicon.git/icons/python/python-original.svg"
+    text = """
+        I have opened a Jupyter notebook before, so I've basically mastered the field and python.
+    """
+[[list]]
+    name = "web stuffs"
+    icon = "https://devicons.github.io/devicon/devicon.git/icons/go/go-original.svg"
+    text = """
+        I have touched go and typescript in the past.
+        I guess I now have used hugo too?
+    """
+[[list]]
+    name = "C#"
+    icon = "https://devicons.github.io/devicon/devicon.git/icons/csharp/csharp-plain.svg"
+    text = """
+        I have once played a game that was written in C#. 
+    """
