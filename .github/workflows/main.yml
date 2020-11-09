@@ -23,8 +23,11 @@ jobs:
           
     - name: Push update
       run: |
-        git config --global user.name 'ShaddyDC'
-        git config --global user.email 'shaddythefirst@gmail.com'
-        git add .
-        git commit -m "Update website with hugo"
-        git push
+        # Run only if changed
+        if [[ `git status --porcelain` ]]; then
+          git config --global user.name 'ShaddyDC'
+          git config --global user.email 'shaddythefirst@gmail.com'
+          git add .
+          git commit -m "Update website with hugo"
+          git push
+        fi
