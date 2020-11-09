@@ -2,7 +2,7 @@
     name = "C++"
     icon = "https://devicons.github.io/devicon/devicon.git/icons/cplusplus/cplusplus-original.svg"
     text = """
-        I know some modern C++ + webgl.
+        I know some modern C++.
     """
 [[list]]
     name = "Data Science"
