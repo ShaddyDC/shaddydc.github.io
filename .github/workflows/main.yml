@@ -1,0 +1,30 @@
+name: Update website
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: recursive
+
+    - name: Build
+      run: |
+        docker run -v "$PWD":/src jojomi/hugo sh -c "
+          cd shaddy.dev && hugo -D -d ../docs"
+          
+    - name: Push update
+      run: |
+        git config --global user.name 'ShaddyDC'
+        git config --global user.email 'shaddythefirst@gmail.com'
+        git add .
+        git commit -m "Update website with hugo"
+        git push
