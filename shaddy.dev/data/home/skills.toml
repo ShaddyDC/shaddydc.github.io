@@ -19,7 +19,7 @@
     """
 [[list]]
     name = "C#"
-    icon = "https://devicons.github.io/devicon/devicon.git/icons/csharp/csharp-plain.svg"
+    icon = "https://devicons.github.io/devicon/devicon.git/icons/csharp/csharp-original.svg"
     text = """
         I have once played a game that was written in C#. 
     """
