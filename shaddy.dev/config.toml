@@ -3,6 +3,9 @@ languageCode = "en-us"
 title = "Shaddy's"
 theme = "SimpleIntro"
 
+[author]
+    name = "Shaddy"
+
 [params]
     mainbg = "/images/background.png"
     name = "Shaddy"
@@ -22,3 +25,7 @@ theme = "SimpleIntro"
         identifier = "projects"
         name = "Projects"
         url = "#projects"
+    [[menu.main]]
+        identifier = "blog"
+        name = "Blog"
+        url = "/blog"
