@@ -7,7 +7,7 @@ theme = "SimpleIntro"
     name = "Shaddy"
 
 [params]
-    mainbg = "/images/background.png"
+    mainbg = "/images/background-lunecron.png"
     name = "Shaddy"
     mainTitle = "Shaddy's"
     mainText = "Welcome to my semi stock site"
