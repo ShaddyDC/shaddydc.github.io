@@ -29,3 +29,8 @@ theme = "SimpleIntro"
         identifier = "blog"
         name = "Blog"
         url = "/blog"
+
+    [[menu.blog]]
+        identifier = "blog"
+        name = "Blog"
+        url = "/blog"
