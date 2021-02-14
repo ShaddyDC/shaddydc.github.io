@@ -5,6 +5,16 @@
     <link>https://shaddy.dev/categories/</link>
     <description>Recent content in Categories on Shaddy&#39;s</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://shaddy.dev/categories/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Sun, 14 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://shaddy.dev/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Blog</title>
+      <link>https://shaddy.dev/categories/blog/</link>
+      <pubDate>Sun, 14 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://shaddy.dev/categories/blog/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

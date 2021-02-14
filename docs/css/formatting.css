@@ -1,0 +1,171 @@
+/* Sakura.css v1.3.1
+* ================
+* Minimal css theme.
+* Project: https://github.com/oxalorg/sakura/
+*/
+/* Body */
+  
+h1:not(.sakignor), h2:not(.sakignor), h3:not(.sakignor), h4:not(.sakignor), h5:not(.sakignor), h6:not(.sakignor) {
+  line-height: 1.1;
+  font-weight: 700;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-word; }
+
+h1:not(.sakignor) {
+  font-size: 2.35em; }
+
+h2:not(.sakignor) {
+  font-size: 2.00em; }
+
+h3:not(.sakignor) {
+  font-size: 1.75em; }
+
+h4:not(.sakignor) {
+  font-size: 1.5em; }
+
+h5:not(.sakignor) {
+  font-size: 1.25em; }
+
+h6:not(.sakignor) {
+  font-size: 1em; }
+
+p:not(.sakignor) {
+  margin-top: 0px;
+  margin-bottom: 2.5rem; }
+
+small:not(.sakignor), sub:not(.sakignor), sup:not(.sakignor) {
+  font-size: 75%; }
+
+hr:not(.sakignor) {
+  border-color: #1d7484; }
+
+a:not(.sakignor) {
+  text-decoration: none;
+  color: #3cb8ce; }
+  a:hover:not(.sakignor) {
+    color: #982c61;
+    border-bottom: 2px solid #4a4a4a; }
+  a:visited:not(.sakignor) {
+    color: #376770; }
+
+ul:not(.sakignor) {
+  list-style-type: disc;
+  padding-left: 1.4em;
+  margin-top: 0px;
+  margin-bottom: 2.5rem; }
+
+ol:not(.sakignor) {
+  list-style-type: decimal;
+  padding-left: 1.4em;
+  margin-top: 0px;
+  margin-bottom: 2.5rem; }
+
+li:not(.sakignor) {
+  margin-bottom: 0.4em; }
+
+blockquote:not(.sakignor) {
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-left: 1em;
+  padding-top: 0.8em;
+  padding-bottom: 0.8em;
+  padding-right: 0.8em;
+  border-left: 5px solid #1d7484;
+  margin-bottom: 2.5rem;
+  background-color: #27272a; }
+
+blockquote:not(.sakignor) p:not(.sakignor) {
+  margin-bottom: 0; }
+
+img:not(.sakignor), video:not(.sakignor) {
+  height: auto;
+  max-width: 100%;
+  margin-top: 0px;
+  margin-bottom: 2.5rem; }
+
+/* Pre and Code */
+pre:not(.sakignor) {
+  background-color: #27272a;
+  display: block;
+  padding: 1em;
+  overflow-x: auto;
+  margin-top: 0px;
+  margin-bottom: 2.5rem;
+  border-radius: 0.25rem; }
+
+code:not(.sakignor) {
+  font-size: 0.9em;
+  padding: 0 0.5em;
+  background-color: #27272a;
+  white-space: pre-wrap; }
+
+pre:not(.sakignor) > code:not(.sakignor) {
+  padding: 0;
+  background-color: transparent;
+  white-space: pre; }
+
+/* Tables */
+table:not(.sakignor) {
+  text-align: justify;
+  width: 100%;
+  border-collapse: collapse; }
+
+td:not(.sakignor), th:not(.sakignor) {
+  padding: 0.5em;
+  border-bottom: 1px solid #f1f1f1; }
+
+/* Buttons, forms and input */
+input:not(.sakignor), textarea:not(.sakignor) {
+  border: 1px solid #4a4a4a; }
+  input:focus, textarea:focus {
+    border: 1px solid #1d7484; }
+
+textarea:not(.sakignor) {
+  width: 100%; }
+
+.button:not(.sakignor), button:not(.sakignor), input[type="submit"]:not(.sakignor), input[type="reset"]:not(.sakignor), input[type="button"]:not(.sakignor) {
+  display: inline-block;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: #1d7484;
+  color: #f9f9f9;
+  border-radius: 1px;
+  border: 1px solid #1d7484;
+  cursor: pointer;
+  box-sizing: border-box; }
+  .button[disabled]:not(.sakignor), button[disabled]:not(.sakignor), input[type="submit"][disabled]:not(.sakignor), input[type="reset"][disabled]:not(.sakignor), input[type="button"][disabled]:not(.sakignor) {
+    cursor: default;
+    opacity: .5; }
+  .button:focus:enabled:not(.sakignor), .button:hover:enabled:not(.sakignor), button:focus:enabled:not(.sakignor), button:hover:enabled:not(.sakignor), input[type="submit"]:focus:enabled:not(.sakignor), input[type="submit"]:hover:enabled:not(.sakignor), input[type="reset"]:focus:enabled:not(.sakignor), input[type="reset"]:hover:enabled:not(.sakignor), input[type="button"]:focus:enabled:not(.sakignor), input[type="button"]:hover:enabled:not(.sakignor) {
+    background-color: #982c61;
+    border-color: #982c61;
+    color: #f9f9f9;
+    outline: 0; }
+
+textarea:not(.sakignor), select:not(.sakignor), input:not(.sakignor) {
+  color: #4a4a4a;
+  padding: 6px 10px;
+  /* The 6px vertically centers text on FF, ignored by Webkit */
+  margin-bottom: 10px;
+  background-color: #f1f1f1;
+  border: 1px solid #f1f1f1;
+  border-radius: 4px;
+  box-shadow: none;
+  box-sizing: border-box; }
+  textarea:focus:not(.sakignor), select:focus:not(.sakignor), input:focus:not(.sakignor) {
+    border: 1px solid #1d7484;
+    outline: 0; }
+
+input[type="checkbox"]:focus:not(.sakignor) {
+  outline: 1px dotted #1d7484; }
+
+label:not(.sakignor), legend:not(.sakignor), fieldset:not(.sakignor) {
+  display: block;
+  margin-bottom: .5rem;
+  font-weight: 600; }
