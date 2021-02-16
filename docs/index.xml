@@ -8,6 +8,21 @@
     <language>en-us</language>
     <lastBuildDate>Sun, 14 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://shaddy.dev/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Credits</title>
+      <link>https://shaddy.dev/credits/</link>
+      <pubDate>Tue, 16 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://shaddy.dev/credits/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;Website theme is based on &lt;a href=&#34;https://themes.gohugo.io/simpleintro&#34;&gt;Simple Intro&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Lunecron#5256 (discord tag) for creating the page art&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://devicon.dev/&#34;&gt;Devicon&lt;/a&gt; for skill icons&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I try to give credit where due, but if I&amp;rsquo;m missing anyone please let me know me at shaddythefirst at gmail dot com.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Hello World</title>
       <link>https://shaddy.dev/blog/hello-world/</link>
       <pubDate>Sun, 14 Feb 2021 00:00:00 +0000</pubDate>
