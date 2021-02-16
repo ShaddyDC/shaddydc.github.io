@@ -1,25 +1,25 @@
 [[list]]
     name = "C++"
-    icon = "https://devicons.github.io/devicon/devicon.git/icons/cplusplus/cplusplus-original.svg"
+    icon = "/images/devicon-cplusplus-original.svg"
     text = """
         I know some modern C++.
     """
 [[list]]
     name = "Data Science"
-    icon = "https://devicons.github.io/devicon/devicon.git/icons/python/python-original.svg"
+    icon = "/images/devicon-python-original.svg"
     text = """
         I have opened a Jupyter notebook before, so I've basically mastered the field and python.
     """
 [[list]]
     name = "web stuffs"
-    icon = "https://devicons.github.io/devicon/devicon.git/icons/go/go-original.svg"
+    icon = "/images/devicon-go-original.svg"
     text = """
         I have touched go and typescript in the past.
         I guess I now have used hugo too?
     """
 [[list]]
     name = "C#"
-    icon = "https://devicons.github.io/devicon/devicon.git/icons/csharp/csharp-original.svg"
+    icon = "/images/devicon-csharp-original.svg"
     text = """
         I have once played a game that was written in C#. 
     """
