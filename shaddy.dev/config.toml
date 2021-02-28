@@ -5,7 +5,7 @@ theme = "SimpleIntro"
 
 [author]
     name = "Shaddy"
-    mail = "shaddythefirst at gmail dot com"
+    mail = "blog@shaddy.dev"
 
 [params]
     mainbg = "/images/background-lunecron.png"
