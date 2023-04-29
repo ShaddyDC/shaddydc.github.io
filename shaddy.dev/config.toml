@@ -1,6 +1,6 @@
 baseURL = "https://shaddy.dev/"
 languageCode = "en-us"
-title = "Shaddy's"
+title = "Shaddy's Shallow Shelf"
 theme = "hugo-blog-awesome"
 
 [author]
