@@ -2,9 +2,9 @@ name: Update website
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
   workflow_dispatch:
 
 jobs:
@@ -12,22 +12,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-      with:
-        submodules: recursive
+      - uses: actions/checkout@v3
+      - uses: cachix/install-nix-action@v20
 
-    - name: Build
-      run: |
-        docker run -v "$PWD":/src jojomi/hugo sh -c "
-          cd shaddy.dev && hugo -D -d ../docs"
-          
-    - name: Push update
-      run: |
-        # Run only if changed
-        if [[ `git status --porcelain` ]]; then
-          git config --global user.name 'ShaddyDC'
-          git config --global user.email 'shaddythefirst@gmail.com'
-          git add .
-          git commit -m "Update website with hugo"
-          git push
-        fi
+      - name: Build
+        run: |
+          cd shaddy.dev && nix develop -c hugo -D -d ../docs
+
+      - name: Push update
+        run: |
+          # Run only if changed
+          if [[ `git status --porcelain` ]]; then
+            git config --global user.name 'ShaddyDC'
+            git config --global user.email 'shaddythefirst@gmail.com'
+            git add .
+            git commit -m "Update website with hugo"
+            git push
+          fi
