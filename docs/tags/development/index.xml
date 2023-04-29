@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>development on Shaddy&#39;s</title>
+    <title>development on Shaddy&#39;s Shallow Shelf</title>
     <link>https://shaddy.dev/tags/development/</link>
-    <description>Recent content in development on Shaddy&#39;s</description>
+    <description>Recent content in development on Shaddy&#39;s Shallow Shelf</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 14 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://shaddy.dev/tags/development/index.xml" rel="self" type="application/rss+xml" />
@@ -13,17 +13,10 @@
       <pubDate>Sun, 14 Feb 2021 00:00:00 +0000</pubDate>
       
       <guid>https://shaddy.dev/blog/hello-world/</guid>
-      <description>&lt;h2 id=&#34;hello-world&#34;&gt;Hello World&lt;/h2&gt;
-&lt;p&gt;I&amp;rsquo;ve recently made some changes and updates to the site and theme to support blogging.
-This came with an updated front page image credits to Lunecron#5256 (discord tag).&lt;/p&gt;
-&lt;p&gt;I have been holding out on pushing the changes for a while since, although I do want to get into blogging, I haven&amp;rsquo;t yet written anything.
-An empty blog would look a little strange.&lt;br&gt;
-But I&amp;rsquo;ve decided it&amp;rsquo;s time.
-No point just letting it sit on my hard drive.&lt;br&gt;
-So here we go.
-My blog is out.&lt;br&gt;
-Maybe there will be more content in the future.&lt;/p&gt;
-</description>
+      <description>Hello World An empty blog would look a little strange.
+But I&amp;rsquo;ve decided it&amp;rsquo;s time. No point just letting it sit on my hard drive.
+So here we go. My blog is out.
+Maybe there will be content in the future.</description>
     </item>
     
   </channel>
