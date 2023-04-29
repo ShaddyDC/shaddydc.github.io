@@ -1,37 +1,8 @@
 baseURL = "https://shaddy.dev/"
 languageCode = "en-us"
 title = "Shaddy's"
-theme = "SimpleIntro"
+theme = "hugo-blog-awesome"
 
 [author]
-    name = "Shaddy"
-    mail = "blog@shaddy.dev"
-
-[params]
-    mainbg = "/images/background-lunecron.png"
-    name = "Shaddy"
-    mainTitle = "Shaddy's"
-    mainText = "Welcome to my semi stock site"
-
-[menus]
-    [[menu.main]]
-        identifier = "about"
-        name = "About"
-        url = "#about"
-    [[menu.main]]
-        identifier = "skills"
-        name = "Skills"
-        url = "#skills"
-    [[menu.main]]
-        identifier = "projects"
-        name = "Projects"
-        url = "#projects"
-    [[menu.main]]
-        identifier = "blog"
-        name = "Blog"
-        url = "/blog"
-
-    [[menu.blog]]
-        identifier = "blog"
-        name = "Blog"
-        url = "/blog"
+name = "Shaddy"
+mail = "blog@shaddy.dev"
