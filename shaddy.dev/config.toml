@@ -3,6 +3,54 @@ languageCode = "en-us"
 title = "Shaddy's Shallow Shelf"
 theme = "hugo-blog-awesome"
 
+defaultContentLanguage = "en-gb"
+
+[markup]
+[markup.highlight]
+noClasses = false
+[markup.goldmark.renderer]
+unsafe = true
+
+[menu]
+[[menu.main]]
+# The page reference (pageRef) is useful for menu highlighting
+# When pageRef is set, setting `url` is optional; it will be used as a fallback if the page is not found.
+pageRef = "/"
+name = 'Home'
+url = '/'
+weight = 10
+[[menu.main]]
+pageRef = "posts"
+name = 'Posts'
+url = '/posts/'
+weight = 20
+[[menu.main]]
+pageRef = "about"
+name = 'About'
+url = '/about/'
+weight = 30
+
+[params]
+sitename = "Shaddy's Shallow Shelf"
+defaultColor = "auto"
+description = "A place to dump thoughts"
+mainSections = ['posts']
+
+[params.author]
+avatar = "avatar.jpg" # put the file in assets folder; also ensure that image has same height and width
+# Note: image is not rendered if the resource(avatar image) is not found. No error is displayed.
+intro = "Shaddy's Shallow Shelf"
+name = "Shaddy"
+description = "Have you always wanted to read what such an important person as me has to say? Well, maybe you can find it here."
+
+[[params.socialIcons]]
+name = "github"
+url = "https://github.com/ShaddyDC"
+
+[[params.socialIcons]]
+name = "Rss"
+url = "index.xml"
+
 [author]
 name = "Shaddy"
 mail = "blog@shaddy.dev"
