@@ -25,10 +25,15 @@ name = 'Posts'
 url = '/posts/'
 weight = 20
 [[menu.main]]
+pageRef = "projects"
+name = 'Projects'
+url = '/projects/'
+weight = 30
+[[menu.main]]
 pageRef = "about"
 name = 'About'
 url = '/about/'
-weight = 30
+weight = 40
 
 [params]
 sitename = "Shaddy's Shallow Shelf"
