@@ -40,18 +40,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: ./public
-
-      - name: Push update
-        run: |
-          # Run only if changed
-          if [[ `git status --porcelain` ]]; then
-            git config --global user.name 'ShaddyDC'
-            git config --global user.email 'shaddythefirst@gmail.com'
-            git add .
-            git commit -m "Update website with hugo"
-            git push
-          fi
+          path: ./shaddy.dev/public
 
   # Deployment job
   deploy:
