@@ -6,7 +6,7 @@ tags:
   - Programming
   - Algorithms
   - C++
-title: The Divisible Number Project
+title: The Divisible Numbers Challenge
 ---
 
 After recently having handed in my Master's Thesis for my Computer Science Degree, I have found myself looking for a job.
