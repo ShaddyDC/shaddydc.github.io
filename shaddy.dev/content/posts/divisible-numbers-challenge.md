@@ -23,7 +23,9 @@ This post will first introduce a problem to be solved before giving a naive solu
 We will then go over some correctness problems and analyse some things to watch out for when dealing with C++.
 In the second half, we will go over some ways to make the algorithm more efficient.
 This article is intended not to require much prerequisite knowledge, and relevant concepts are introduced.
-I am open to feedback.
+Please do not hesitate to leave feedback!
+If something looks stupid along the way, see if I get to it at a later point.
+If the article ends and I didn't bring it up, please mention it to me.
 
 All code here will be in C++ because that's what the interview was about and because it can demonstrate some of my mistakes.
 Most of the ideas apply to any language.
@@ -65,7 +67,7 @@ I will blissfully ignore that problem here and focus on the challenge.
 
 Programmatically, we can check if $x$ divides $y$ cleanly by looking at the remainder of a division using the modulo operator.
 An integer value can only represent whole numbers.
-Dividing an integer by another, we will always get an integer result, discarding the remainder, e.g., `11/4 = 2` instead of `2.75`.
+When dividing an integer by another, we will always get an integer result, discarding the remainder, e.g., `11/4 = 2` instead of `2.75`.
 Using the modulo operator, we can get the remainder of that division: `11 % 4 == 3`.
 Together, they add up to the whole: $11=2\cdot 4+3$.
 If the remainder is $0$, we have a clean division, i.e., if `x % y == 0`.
@@ -543,6 +545,32 @@ Maybe it makes more sense to do a binary search for large steps, or maybe turnin
 But again, I expect this highly depends on the workload.
 Feel free to run a complexity analysis, and if you ever actually need a solution for this, make sure to benchmark your data.
 
+### Skipping the main loop
+
+This is an idea I have to credit my sister for.
+Why don't we take a step back and look at the problem in its whole context.
+We compute the greatest common divisor of `a` and then we try all its divisors and itself against `b`.
+But most of this is completely unnecessary.
+If we find that the greatest common divisor $d$ divides some number $x$ in `b`, obviously all the divisors of $d$ will divide $x$ too.
+So it is completely sufficient to test _only if the greatest common divisor divides no numbers in `b`_.
+
+```cpp
+int find_divisor(const std::vector<int>& a, const std::vector<int>& b){
+    if(a.empty() && b.empty()) return 0;
+    if(a.empty()) return max_abs(b) + 1;
+
+    const auto d = gcd(a);
+
+    if(none_divide(b, d)){
+        return d;
+    }
+
+    throw "No solution found";
+}
+```
+
+While this does not solve the general problem efficiently of finding if a number doesn't divide any of a set of numbers, it solves our particular problem formulation very efficiently.
+
 ## Further Work?
 
 So, this is where we're at.
@@ -557,10 +585,6 @@ While [`i32::abs`](https://doc.rust-lang.org/std/primitive.i32.html#method.abs) 
 In C++ land, you might choose to use a library like [SafeInt](https://github.com/dcleblanc/SafeInt), but that is often not an ideal solution.
 
 We have done some good work on improving the expected performance of dealing with `a`.
-Unfortunately, we don't have a great strategy for dealing with `b`.
-Maybe there's some good way to solve this.
-Maybe that way is really technical and complicated.
-Maybe it's really simple.
-Feel free to let me know, and I may update this post!
+Unfortunately, we don't have a great strategy for dealing with `b` generally, but we have found a great strategy for finding a single solution for our specific problem.
 
-You can play around with all the code [here](https://godbolt.org/#z:OYLghAFBqd5QCxAYwPYBMCmBRdBLAF1QCcAaPECAMzwBtMA7AQwFtMQByARg9KtQYEAysib0QXACx8BBAKoBnTAAUAHpwAMvAFYTStJg1DIApACYAQuYukl9ZATwDKjdAGFUtAK4sGe1wAyeAyYAHI%2BAEaYxCAAzLGkAA6oCoRODB7evnrJqY4CQSHhLFEx8baY9vkMQgRMxASZPn5cFVXptfUEhWGR0XEJCnUNTdmtQ109xaUDAJS2qF7EyOwc5rHByN5YANQmsW5OQ8SYrPvYJhoAguub25h7B8gsTAQI55c3ZhsMW167%2BzcWzwLEICg%2B11uv3ujyBTAUSgaEK%2BPz%2BAIOADdMA4SMioWiHoDMKoVolqnjvnd/oSDgwfNE8KZYhdIZTodTYWJgCRCAgWHjrgB6QU7YIEHYvYIQWYmADsViFIp2yp28MRBAgQ3QIBATAiCggAElQgAVAD6AFljbNHgARfa2nbG81W0Iy2IKq7Cvay%2B2Q65iiVMVRmvUGtAMIY7LU6rE44iAsUfMwANh2GJl8s%2BlwAnIGWHadhp9p7c/xiBAI1GmF4iOmxDsQOnM6WNDnc3gqJqCNrdfqIBixDbzhKW9m27ncwWHdGezqwwOhyXx%2B2J76V3K/Tc2ycCEsGBLl5D1/6rvngqH%2B1XxTGQHGiAmDknmeY0xm5a284IJYXnZargAGke245uWlYCNWtaoPWtCNs2H4bm2nbdr2C6DrQw4HKOCH%2BqueHTrEjq3mhS4eoh7YniBm4rru%2B6HmRx5bp8ESoJ4qq0LQZr4BieBYOBkY3nOd7Yg%2BiaCMmb6kKK37cWOuFgdeqpQTBcHvlmuEdl26F7GYACsOzcTsYBgDOGhyVRE47pge7EAeVBiEowGTmuTEuTR1l0QQxBeJgTmUZ83osWxDACJgXF4DxfGKbe964k%2B4kvqm6ZSYGsk4V6IpliQ/GQXW2lNmpnres5eZaQ25j6YZDqmeZxWWXhtG2Ts9m0I5DEZXs9XUYqnUUVudU5o1B5eT5wHFf51xBbBIUhOFkWYDlgm9rFj6HAlFxJRiKUyRF5kqqKWkAHSYCwZIAJ7SjaQ07CNvntSu3pXAi9LpqKCjRiQBCYOgK41nWhCFhih3IFEwBSu6n5gX90F4IW3ElqKsIzkDERMMgADW0oI7D1gzml6kWTmADuCB0AtABUAOAqKw6WNYhBOfVyGU%2BK1WETTOzXS1bWft1IHXbdfmuWe37AMg6CLbOy0iXFa0EBJ8EE5pA7HadBAXbMV0eU1xb3W20MGYDh1UMQshY3rIFQ8pVPs0DIOYGDDDSjpFg7Fw2PisZyPA645uu7jliEOZJXoIWt5ixL6BSSzEMbhNq789rB4/fdE0dYGNAMOgc14Ao2XRUJK1ifLiVpkwUkF9L8bFwrES1ZlSFdkwqvnc7r6vjsEQt%2Brl2c0nRZjQ3pUQM3J2t5rfc2QeLwhgudcu27jMJwNVv/YW7seoj1Oggwl4GkwEMu/T9e9crYicdxvELeXHPt0lM1hZffERClmvpQNJXXXgg%2Bn25PWTvHAKQ83imyJjpMwoRoJ528NUZqiws7mDMD/PmQDpLikztnS%2BecKyV1jDLVaz4NplwrhBJaeDq7xRLkQzuJ8z7dw1jpFMHcu5jx7hPa6usipD2QqPNWGstZTyDLPfs89rCLwtgNRSBtQ4zgjiPWOGl/5tlXjDde2MkbsxTv7OmgdaFMy7DIvSiMvbszMjsCMjg6R3V5pZDqJVkIPxzs/V%2Bei8K5i/sgrqlEP6AKUTmEBqAwGIMgR9GB6Q4FeAQWYJB7VxrCwzsETBEVc751IVLcholKEKxvjFfBNdS40PSnQ1hDC75phYXw3uHCl48PoVU/uM894QFEZYcRrYrj7VvF5QwChywsGaYdUG4MpIsKztKEZgyHbDL2LpKwulbQQEDAwFsk86LEX7MshGm4FEdJVLebBGou5DKdvMTux0xlvwtrmKRykZHszkQfJeK4VFb3ZhvV2eBKYaMdFoo%2Buiin6IgIY/SsMTGOjMRY4Io0rn1RuXWbQcMdgim/jCvCapogak%2BdoNmtp0A7JKuRBxoUnELRfjTYOXUrKCJRTYvq45CbIVBSZdmCKyk7EcU/UlUltBvyVpSwa/dsV6zcYA3xIEAlBOiSE6BtZwn8EiT9aJQt6X5iYODdK%2B0NX7T2YXPJWTmSqkLB%2BMwrQdgpikuat2ulqLtW1TqqumS5YjgiEa%2BUZgpKyiktEqSulizrgtna5Ut40C1g0W4ZqiSc7YJHiMzCbhqZgDWLpNwDBE3AU1ZRDNnpA3pOEhQp1BqmCuosAAWhNVJEtlrK0Vq4Na/12bA25PzYQzuxay0Vs9TsMt7qu2%2Bpte0nNwbFiswONTDBUbso31EaOrCabk2prWLalUfMs2fEHbq5t61DUzmNaay1lra39rXY2jdjqW0up3W6j1Xqe2%2BotUe08OavJnS1TmoNQkQ0jvjVhcdWDJ2xrDUZJNKa01LrtZucxrxkAIEltB%2Bo5M9pvvfb2T9gHEHYFUIkES30boIFATsVAyBkBLG%2BiYediD02BpXVR64Gatyrtoyeh1ssW1FsvVYetx67VNrPVui97NjXXp2N6nYfbOOPqYzqVDgIx2Rr/RWKdcaE3AYXZR5U1H1ME3XcxghW62MCbdXui1UlD3id2dx09LG%2BPFofducz2qh2hpkz%2BuTyTo2KcA3OkDi6G2afo8urTkm828aodugzHH7RgYc5Z3ToX%2BOOgQmZrj0WUPDsA7%2Btz/6aGeZU6B3zPp/Oafy50mL%2BTsBhYS4Z2z2mMlWbi8W2ItnksldS05md4aMs8XcwB5z4avOqaixpn0xX7W1diyOfTlWItqZS2Nsrrb2N/gtIBJrjGLOta/bJrOE6FM9fa0Bsj3mZsoLW6snWQsODzFoJwXSvA/AcC0KQVAnB406NdnnJYKwdKxB4KQAgmhLvzHRiASQZhDpcAABwQ8kLKXSKYUyxBhzmb4%2BhOCSDuwDp7nBeAKBABoP7AP5hwFgEgNAp0yZkAoOBcn9AYjAC4N6rAPEVgADU8CYCJgAeSw/d37NBaBfWILj5pmOIjBHqGdTgv2xfMGIGdTnERtAiSl7wMnbBBCc4YLQSXD3eBYBeEYcQuvSD4BOA4CKmBcfG%2BJNiWsqxHtikqJj2geAIjEAlx4LAmOvIghV/MKgBhgAKDZxz7njAVcyEECIMQ7ApCR/kEoNQmPdCtAMEYFAAcbAu/1PAeYqAyTpCtzjyoIl0guCzqMFopBAjBF6CUforRchpAEJXnIKRm8MCmH0GI4wS/m4EJ0EYnhmh6DsKXgfwxui1%2BmA32wk/W/jEn13%2BvPf5gfeWLHq7N2MfG%2BexwHYqgIcpkrZIHYYtkBuzB2YHYEBcCEBIN9rgsxeD/d15rUgwPEeHQhyajQsoEcpiyh6QaCxAQ6o4cDo6kD3aPZ744544E5v6kDE6IAgDDqJC1jkCUBk6JAU6hCsCrCH7H4pin7n6X6HRmC8DfT37EC8R6D8BR6iDiBx70EJ4qDqDG4p6kBEzu6JB%2B7gG3ZQGY576c61joHiioBUAH5H4n5n5EZkHX4QAeA07RCP7P4IFaDv7A7RKHQ5g5gaCSBI4pjI6yggHQ7gGQHQG8CwG2DwGv4aFb4cAUGCG77Y7qGA6kBYhC5l6SBAA%3D%3D).
+You can play around with all the code [here](https://godbolt.org/#z:OYLghAFBqd5QCxAYwPYBMCmBRdBLAF1QCcAaPECAMzwBtMA7AQwFtMQByARg9KtQYEAysib0QXACx8BBAKoBnTAAUAHpwAMvAFYTStJg1DIApACYAQuYukl9ZATwDKjdAGFUtAK4sGIMwBspK4AMngMmAByPgBGmMQSAOyJpAAOqAqETgwe3r7%2BQemZjgJhEdEscQlcybaY9iUMQgRMxAS5Pn6BdQ3Zza0EZVGx8UkpCi1tHfndEwNDFVVjAJS2qF7EyOwc5gDM4cjeWADUJrtuThPEmKxn2CYaAIJ7B0eYp%2BfILEwECHcPzzM%2BwYhy8JzObkOeBYhAU/yeLxBbw%2BkKYCiUbXhgOBoPB5wAbpgHCQsYjce8IZhVFtUo1SUDXmCKecGD54nhTLt7giGUimSixMASIQECxSU8APQS47hAjHb7hCDLEyJKyS6XHTXHNEYggQCboEAgJgxBQQACSkQAKgB9ACyluWHwAImdncdLbaHZFlbs1Y8padEq6EU9ZfKmKobSazWgGBNjgajYTicQIbL/oFjvjlaqAQ8AJzhlgu44aM7%2Bwv8YgQOMJpheIjZsTHEDZ3OVjQFwt4Kj6giG42miD4sROu7yjv5ruFwslt2JgdGmMjscV6fdmfBjcqkPPLvXAgbBjy9cI7ehx7F8LR4d1uVJkApohp84ZrnmALtlWdouCeWlp69qPAAGme%2B4FtWtYCPWjaoM2tCtt%2BeahpuRZ9o%2BK6jrQ47nJOP47jOXbzrs7qYcO2G%2Br%2Bs4XhBu4boex6nn6%2Ba0QCMSoJ42q0LQNr4PieBYNB8YPkuT5Ei%2B6aCJmX74qQMr/vxU6oVB97anBCFITmBGoT2fbYacZgAKzHPxxxgGAC4aMpdFEQWjHECeVBiEo4Gzlue40Z5B6YEejnHAQxBeJgblsU8HFcQwAiYHxeACUJamPs%2BJJvtJH5ZnJClykpOkQapMFyg2TYGW22kobZ6Groh5gmWZbpWTZ7loQ5TkuSFLG6R5O5hfZvlMYFwWhd5AbShFiFRREsXxZgwkJklEkpRcaX3Bl8nhjl5WBlqMr6QAdJgLC0gAnkqTotQFQXtZ2I2nF2gaPOibLZjKCiJiQBCYOgAKBoWRXwYQpb4rtyBxMAipUd90pViQEB/TKpb8RW8MQguQMxEwyAANZKkjeCGVYpGmXFNk/XZADuCB0DNABUAMQjK46WNYhDgaTaG9hAtNyvVhN4GdfX%2Bc5tCuR1N1eZDt29X5J4DVdEv0Ze4bAMg6CzaJg7Ja%2BS0EDJyG/hzQMHcdp3HOd5ai79GnoIDu1UMQsg4xbKkw3DdOE0DIOYGDDBKvjxxcLjcoWajwOuI7Fj48zBCNXZ1sLo%2Byuq%2Bg8lcxDuk9QxAsnl9FthTd4Y0Aw6BTXgCgw4lYma1JOvpV%2BTDyRXGsLVr74rV%2BMQk1DXYc0w%2B2HQQJ2MwEn7HDEffG8s/PS2WrNd5VvdGwPJvnd8UYrh3fsB07m5i12UGu6WW8R3j9Mwgwt5mkwVGR5YfO5WzemwzxJdCfXDOGcPWYTTF/GCTNMRrUnvfOeTVzp4FnpLcW6pIEZ2gYWX49syaGTMJEeCZdvCNGOPwLwRdzBmAgQrfc%2Bd/yF2Lr/MuNZG7JmbtXXWb8qHiVTLQ2uo9O6Sx7uPJeQ8R5j0XoPKeTFzb%2BjZhwvhy8s4RjXsODe1h/ZuTgV2NScM46E0TrDNOtld6QRdhpE%2BhMj7I3OAuHOEdrDMzYU1DmcdjLw2DoTayxw4yOFZHLTqO8H7dz7N/F%2B/9AEWLsoWMBBCAm0QfrArRCDUBILwagt6GDshYPWLgsw%2BDRY/TzoGAu4QyFxVLuXAqi4m5MNSjXNu2p5LzWKdrXWHdgHsL7Avfug8P48M4fw02EihHy08bDNp4jp6rwvhAGRlg5FOxuttR8gVDAKGrCwYZu1Qbg3krwouSoVmLK9ss04RkrBGWdBAcMDAOwdOnuRM0xyka7g0VtLUj4KF6jHksn2qxR77TWUA8ZbMlFW1LGoq%2B8j3Fz33row%2BuNaYomMVcpmt9/Hsz7NYkyeM7HugcU48Ig0vkgMUQUuG2gEbHGlOArFkCuw6niHqPA1NtA82dOgDRTVunwogN43%2BQkAEMzhaAiRxLhHYu7Bk/lHNkWWUJviz8I9WW5PZfJbQQDNr8sCRImlaTFWhJAeEtmkTokpNiegxsCTsHJNSXyoMw0slFxLhQtWhTqFVNbiPehBTKmSRKTUmO88%2BncKzLwpp/TBGAtEX6yepymKDPXozCOR9pwQR%2BU2FR7p/kMoCahDmUrprDPkvSj1Srp4mO6sNeBCBEHIL1Z4A1AhEk4K%2BikoaMbixMHBrlbazbtp3MrjQt1XJtSlh/GYLg8kgjHCHVwIy9FRZtvbUU111Tu0xF7aqMw8kUjHBSfJIy5ZtzjMnZqR8aBGyQrwqQq1LsVm4TcPTMAOwjJuAYFe8CLbaKPv9Du21jCZ2tx7QuH8ABaft8kf1DsAwB0d46X07pdYtT987v2qj/QBldf6l3HB/RusDMbX17vWNzIxR7sknprG/GRuG3DmWvbe%2B9E6tSEOfQCTDHb7XLS/YTPtA7h2DvkqBrd4HJ2QZbkxmDLHF3Lvkmu44G7B3ocvK%2BwKR1W2vt3WJfdOGL14cteQ09rDD2kfvTeu9OwqOTt3I4n4yAEA2rM60amNkFNTqNMp7TyDsCqFSBJT6AVi1ROOKgZAyANifRMHpvBD6d00dC08R9e5aMRYgwxj9TGmALqsNxujsXp1QYE0l5DK6xNoZS9JtL9nsOOePRpwjZ7HO6YowZnjZrUuank22vjzDsDMfdKxjj7H/Zjvy48ej6X%2BOlNHklqTRD%2BtFYPSjNTOSBLWqI%2Bey95H9MhYa0%2B6j5Vxvvoy0NxLsHkuukM01uL22JyCfa3mXr9WjuDgc1N0jpXclzYq3dsjgXqsrbqzF1btXJnHcGxOXbQmLD9tG5tquXbWtnaDBYXYo2ru/Zu8Vl7D3ZuaeI6pnTS3KO1bC99%2BHdmtv/e7YD87%2B2PsI7tfFobUOfxATtKBOHX3rsTZU/TFHeTytaZe1V5bh3CFXbNkNDgqxaCcCMrwPwHAtCkFQJwC9MKI5lw2FsQyuweCkAIJoYXqxMYgEkGYXaXAAAcRvJCJCMgEAIuwzcFiBPoTgkgJda5l5wXgCgQAaA11r1YcBYBIDQIdKmZAKDQUD/QBIwAuBrqwAJLYAA1PAmAyYAHlXOS/VzQWgH1iDu%2BGc7mI4RWhHU4OrgvzBiBHWTzEbQEkS%2B8AD2wQQyeGC0GL1L3gWBvhGHEO30g%2BBrgODipgd3veqREkbNsaXsp6jO9oHgGIxAi8eCwM7wK0I6%2BrCoAYYACgE9J9T4wOvMhBAiDEOwKQx/5BKDUM73QA6DBGBQGYyw%2Bh5/u8gKsVAtJsgj7d/UCS2QLgRc0wfgA6oQ4QwwlQowA6RQWQAgIBegsBjQCwIw1QPQABAg/QUw5a%2BQA6dgGBTQkwgwEBiw0BtgRBCBeBRBKBUB1QqwSumw5%2BIuYuTuvesuHAxwqgRuAQgGkgxwysyA/sBuZgxwEAuAhAJAquXAywvAmu7ek8pAuu1uu0Ru/aGgiQVuAQiQxkGguwRu9uHAjupAku0u7BbuHuXu8hpAvuiAIA2GqQjY5AlAAeqQQekQrA2wXBPBAQfBAhQhu0ZgvAn0EhxAgkeg/AJ%2Bog4gF%2BERV%2BKg6gved%2BpAZMi%2BqQG%2BBh4uxhzu7ByejYDhcoqAVAnB3BvB/Bvm/hIhEAHgYe8QUhMhlhWgChuuKSu0BYBYGgkgNuAQtuiQuhpuBhRhJhvAZhtgFhchjRzBHAgRWRbBruDR2upAhIOegBkgQAA%3D%3D%3D).
