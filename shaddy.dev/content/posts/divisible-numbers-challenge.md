@@ -1,6 +1,6 @@
 ---
 date: 2023-05-01
-description: Analysing a specific algorithmic problem with C++ and looking at some non-obvious and obvious problems and algorithmic performance improvements.
+description: Analysing a specific algorithmic problem with C++ and looking at some obvious and non-obvious problems and algorithmic performance improvements.
 draft: true
 tags:
   - Programming
@@ -19,6 +19,12 @@ The interview process was nice, and I feel like I got along well with the team.
 They provided me with an interview challenge that stuck with me.
 Maybe it's because it was the only actual LeetCode-style interview I had, but there are some really interesting aspects to the problem.
 
+This post will first introduce a problem to be solved before giving a naive solution.
+We will then go over some correctness problems and analyse some things to watch out for when dealing with C++.
+In the second half, we will go over some ways to make the algorithm more efficient.
+This article is intended not to require much prerequisite knowledge, and relevant concepts are introduced.
+I am open to feedback.
+
 All code here will be in C++ because that's what the interview was about and because it can demonstrate some of my mistakes.
 Most of the ideas apply to any language.
 See if you can spot the issues before I explain them, or maybe you see something I missed!
@@ -36,7 +42,7 @@ For example, $4$ cleanly divides $8$, $64$ or even $12938724$.
 $4$ does not, however, cleanly divide $2$, $3$, $7$, or $12938725$.
 
 {{< callout title="TIP" >}}
-You can tell if a number cleanly divides by $4$ if its last 2 digits divide by $4$. Therefore, because $24$ divides by $4$, you can tell that $12938724$ divides by $4$.
+If you didn't know, you can tell if a number cleanly divides by $4$ if its last 2 digits divide by $4$. Therefore, because $24$ divides by $4$, you can tell that $12938724$ divides by $4$.
 You can find some background and similar rules for other numbers on [Wikipedia](https://en.wikipedia.org/wiki/Divisibility_rule).
 {{< /callout >}}
 
@@ -52,17 +58,17 @@ All of $21, 6, 15$ are multiples of $3$, yet none of $2, 7, 8$ or $22$ are.
 
 Note that there can be multiple correct answers.
 It may not be immediately obvious from the problem statement, but negative integer numbers are perfectly valid, so $-3$ is also a valid solution!
-But even beyond that, if all numbers in `a` were twice what they are, i.e. `{42, 12, 12, 30}`, $6$ would be another valid solution.
-This could potentially make it really difficult to write robust tests for this problem, because there is often no single correct solution.
+But even beyond that, if we doubled all numbers in `a`, i.e., `{42, 12, 12, 30}`, $6$ would be another valid solution.
+This makes it non-trivial to write robust tests that check for correctness.
+Checking for a specific, known valid solution may often be sufficient, but it can't deal as flexibly with a changing implementation.
 I will blissfully ignore that problem here and focus on the challenge.
 
-Programmatically, we can check if $x$ divides $y$ cleanly by looking at the remainder of a division with the modulo operator.
-For example, let's say we are dividing $11$ by $4$.
-Technically, it is $11/4=2.75$.
-Because we're working on [integers in C++](https://stackoverflow.com/questions/3602827/what-is-the-behavior-of-integer-division), we have `11 / 4 == 2`.
-However, we also have `11 % 4 == 3`.
-This is because $11=2\cdot 4+3$.
-In other words, $x$ divides $y$ cleanly if `x % y == 0`.
+Programmatically, we can check if $x$ divides $y$ cleanly by looking at the remainder of a division using the modulo operator.
+An integer value can only represent whole numbers.
+Dividing an integer by another, we will always get an integer result, discarding the remainder, e.g., `11/4 = 2` instead of `2.75`.
+Using the modulo operator, we can get the remainder of that division: `11 % 4 == 3`.
+Together, they add up to the whole: $11=2\cdot 4+3$.
+If the remainder is $0$, we have a clean division, i.e., if `x % y == 0`.
 For example, consider `8 % 4 == 0`.
 
 ## My Naive Solution
@@ -132,23 +138,23 @@ C++20 has introduced the concepts of [ranges](https://en.cppreference.com/w/cpp/
 For the sake of simplicity, and not because I've been using too much Rust to remember the syntax from the top of my head during the interview, I will stick to the classical loop-based implementations.
 If this were a proper program, instead of throwing a raw string, we'd use a proper exception type.
 We might also consider making this a template over the [`std::integral` concept](https://en.cppreference.com/w/cpp/concepts/integral) or use a [`std::span`](https://en.cppreference.com/w/cpp/container/span) instead of a `std::vector` for more flexibility.
-But again, so that it is easier to understand for people not familiar with the language, I will stick with this.
+But again, I will stick with this so that it is easier to understand for people not familiar with the language.
 
-Now, before we get into the problems this has, we'll try to understand what it does first.
-We start with a look at the function guards.
+Before we get into the problems this has, we'll try to understand what it does first.
+We start with a look at the first two if-statements, the function guards.
 Again, this is obvious in hindsight, but when first confronted with a problem statement, these are questions you have to think about.
 If both `a` and `b` are empty, _any_ number would cleanly divide all numbers in `a` and none of those in `b`.
 That is, there is no number inside those arrays that would fail `all_divide(a, 0) && none_divide(b, 0)` as neither loop runs a single iteration.
-If either of those arrays contained a value, this would lead to a division by $0$, which is Bad, so we start the loop below at 1 instead.
+If either of those arrays contained a value, this would lead to a division by $0$, which is Bad™, so we start the loop below at 1 instead.
 
-Now, what is that about `return max_abs(b) + 1;`?
+But what is that about `return max_abs(b) + 1;`?
 Simple! If `a` is empty, we merely have to find a number that doesn't divide any number in `b`.
 How do we find a number that does not cleanly divide any number in `b`?
 We just take a number that is larger than any number in `b`.
 No number can be cleanly divided by a larger number!
 Consider the remainder of `5 % 8 == 5`, and keep in mind we are talking about absolute values.
 
-Now we only have cases left to consider where there is any elements in `a`.
+Now we only have cases left to consider where there are elements in `a`.
 So we have to find a number that cleanly divides all of those.
 We can simply try all numbers starting from 1 exhaustively.
 Above, we have shown that `all_divide(a, max_abs(a) + 1`) is clearly false, so we stop one iteration before reaching that point.
@@ -168,12 +174,12 @@ int main(){
 ```
 
 and the program prints `3`!
-In the interview, we talked a bit about the complexity, which is a topic I won't explain here in detail.
+In the interview, we talked a bit about the [complexity](https://en.wikipedia.org/wiki/Time_complexity), which is a topic I won't explain here in detail.
 It's basically a measure of how the runtime grows for larger inputs.
-Here, the worst-case runtime is bound by $O(\max(a)\cdot(|a|+|b|))$.
-We are counting up the numbers up to the maximum number in a, $\max(a)$, assumed to be positive, and for each number, we check if its divisible against each number in `a` and each number in `b`. In the worst case, we always run through all items up to the last item in `b` before proceeding to the next iteration.
+Here, the worst-case runtime is bounded by $O(\max(a)\cdot(|a|+|b|))$.
+We are counting up the numbers up to the maximum number in a, $\max(a)$, assumed to be positive, and for each number, we check if it's divisible against each number in `a` and each number in `b`. In the worst case, we always run through all items up to the last item in `b` before proceeding to the next iteration.
 
-My interviewer also asked me about parallelisation (it parallelises very well if you put each iteration of the `find_divisor` loop on a new thread, but that's a topic for another time).
+During the interview, we also talked touched on parallelisation (it parallelises very well if you put each iteration of the `find_divisor` loop on a new thread, but that's a topic for another time).
 So all is good, right?
 
 ### Problems
@@ -195,10 +201,10 @@ In our code, we return `max_abs(b) + 1`.
 We know that a number with an absolute value larger than all items in `b` fulfils the function criteria.
 But what if `max_abs(b)` returns `INT_MAX`?
 We're still dealing with integers, and C++ is not a safe language, so we get an [integer overflow](https://en.wikipedia.org/wiki/Integer_overflow).
-As far as I know, in C++20, a signed integer overflow is [Undefined Behaviour](https://en.cppreference.com/w/cpp/language/ub).
+As far as I know, in C++20, a signed integer overflow is [undefined behaviour](https://en.cppreference.com/w/cpp/language/ub).
 Testing the output on [gcc 12.2 on Compiler Explorer](https://godbolt.org/#z:OYLghAFBqd5QCxAYwPYBMCmBRdBLAF1QCcAaPECAMzwBtMA7AQwFtMQByARg9KtQYEAysib0QXACx8BBAKoBnTAAUAHpwAMvAFYTStJg1DIApACYAQuYukl9ZATwDKjdAGFUtAK4sGIM1ykrgAyeAyYAHI%2BAEaYxCAAHKQADqgKhE4MHt6%2B/oGp6Y4CoeFRLLHxSXaYDplCBEzEBNk%2BfgG2mPZFDPWNBCWRMXGJtg1NLbntCmP9YYPlwwkAlLaoXsTI7BzmAMxhyN5YANQmO25O08SYrKfYJhoAgrv7h5gnZ8gsTAQIt/dPZj2DAOXmOpzcBzwLEICj%2Bj2ewNe7whTAUSiacIBQJBYLOADcakRiJiETi3uDMKpNsluiTAS9QeSzgwfHE8KYdnd4fTEYzkWJgCRCAgWCTHmECEcvqoAPpMaIKCBoBjTI7TdAgEAEhwkcESv5mABsRzxSxMAHYrPCNABOCVS94AESOGlOVqetv4xCVAlVTC8RBNYiOIBNZst/3uNqjeCoEHVmvlirxYiW72wUvD7qjOdtLCdaoIGpASYgKdoZp22dtOfNjsjNbrDZtVwI6wYUrdkab1oe9uhDDlCp9KslCa1hN1Z31nPMxtNFurdsEDtOzoAkhEACoygCyDwAGl3rTavSO/QHUEHaCGw4vmzG4%2BPS%2BW0%2BDM/eT7mbfm14Xiy%2BqbHh60aNvWX49iBrbtp2VbduBHoPNEqCeEcYi0DK%2BB4ngWDnmORaatqRJ6oIBrzqQRz2lhWbNmeyoXoG5a3guEZfrasZlsG5gAKxHFhRxgGAf4aDRbGgS2mBtsQHZUGISjAd%2BFoIbWym2tB0lHAQxBeJgCmQf8yGoQwAiYJheDYbh9H4cWRFTucpGzkaJoUVR5miSBdG%2BpK/qMcGoYsUuj6cTePF8eZTrCe5ilqZJMGybQ8lwWJSkPvpMVSR2Wk6Xpql9iuwDIOgeH/oRk7EtODl3E5AXNhxeIAHSYCwNIAJ4QEsabqR2rpJSBPlXugBYNVQxCyO1Cknme/WUZKf4NcgsTAGE7UnJYRxcG6M0CUJOzOvNrjjVWq1WJYhBRTWtqDX%2B44FUV6AUQAVGdE3RmloFQbFGnoDlDZ5ZKNAMOgZnYQoJDFeOtnlfZBBkWhFFWSVE46lDM5Vca0TnXacZMI1zUEG1b5GnORzRLjrXtZ1n3dS9HE4015MdUcXVSkwsqlhjx3rS9tFg9NeAFhtR38%2B%2BA5DoqTCVhYx3WHgmNBehwM4ZgEBMC5hOGsTxnhIruHRGrcsXRJGWUdzYGpap71Rj8o0AO6rWYERXqD3jdEc/BeID5hmD9vb9kwy3uUcQcnKxDzB%2BHiOQyRMOcmhBaLu0RyGhRyfrdxKW9RHwcQ2V0e3CT8eWmYFHmhRZjF0c3Guk2vX/FnQfjmgAbIu%2BANA1heCg96qsk2%2BZzvmA2zcW4DCD8B4cpY8E%2Bh/Xke5xVMcZkwhcWAAtInq%2Bp5vFGr1w6c1%2B6s858jeex9EK/rzvpdHOvFer1XGfVmH9eN2ss392cbthO35md7zFEc3BAPIeI8x6Z2DpPZ%2BQdPxQIjsfYiC987Lz/AnQIScU4UT3o/OuL8CJIwQdDfO58UFFxLmXCuVcU7YN7LPLSLUYGz3Dq/ZuQDP5t0Vl3FWAC%2B5uGASYYeo9tjgKzkpI4ogCDIAQMVSRjQHqB0YQ3PBTd368M/l7bAqhkiEkwINa2qA7aoGQMgdYOj%2BEjy9uPeukDZ44OgZBaeh9cE2XnoQ2OyDdohysAfWxcC8FR0QWfFeFdr7lwog/bxNCnGamUS3Nh38OH/17rEtwAkQGCMsXYhCDifFML8S41GccSEWETqnVOWCImwNyc4k%2BASMzEI8feCpOTs5KLfskr%2BgMEnd24e0seAiwGOMyT4hhUT8F2QKe450jT6zCN8dUghBT6lTIjE0qeoyYmsJSewjunCe6AI/ikvpoChGDJDlkiBM9Rn%2BNcUvIJG0KlHzyTUm5Bcik7GoYhR5xYNkHI6T/EGiT9mqMOWkgZwz7EXNOVU0qzyJkrw%2BV8mFCzKqvIaZaTcO59xHlWZUlp3y2mbL%2BV0rhSTCVHPSbMyBPjmY9WzHWDgKxaCcG4rwPwHAtCkFQJwXhlhrBqjWBsckgIeCkAIJoBlKwADWIBJBmHqlwBICRJDmm4oaQ0OxlU2kBPoTgkhWXis5ZwXgCgQAaFFeKlYcBYBIDQM1OgcRyCUFtcke18RgBcFCVgbCmwABqeBMA2wAPJaLZSKmgtACBxBNRAaIBrohhEaC1TgIr43MGIC1QN0RtCEmTbwW1bBBCBoYLQJN7LeBYC%2BEYcQZbSD4CuLUAkJqa2UhqAGLYHKJSdANbQPA0RiCJo8FgA1WkoS5pWFQAwwAFB%2BoDcGxguaZCCBEGIdgUhF3yCUGoA1uhAgGCMCgaw1h9C9pNZAFYqAaSZCbcazohJMguEBhMPwgQQhzDKBUPQBQMgCCfZ%2BtI36GADHfcMQI1RagCF6OMTwrQ9Bge6JB2YpQhjxFAzMX9qG%2BhAeQxIFYoN1ibBwzqjgLLSBso5VyjgRxVAJENJvSQRwCrIHWnKswRwIC4EICQVaOwuBLF4GKstHVSDSo1fVBIAQNDmnVYac0Zgq47CSEyjgerSMGoo8a015rBOkCtYgEAb9kgBkdT6O19BiARFYFsajtHDT0cY8x%2BqZheA6M48QHCeh%2BBLtEOINdnmN0qHUDWndpAbb9uSGOojJGyO8Ao4GgMhnJSoCoFRmjdGGNGIc6xiAHhTNxG47x/jFqpX%2BDlTaG0GhJCasNFq80GgFPSCUyp6LhqOAabNQJrQQmlNOdUzW9TWnOsrAJMQdIzhJBAA%3D%3D%3D), this results in $-2147483648$.
 This just so happens to be `INT_MIN`, which technically has an absolute value larger than `INT_MAX` of $2147483647$ by $1$, so it's technically a valid solution even if not what we expected.
-Nevertheless, this is Undefined Behaviour, which you shouldn't be relying on, and which could be changed at the compiler implementers' convenience.
+Nevertheless, this is undefined behaviour, which you shouldn't be relying on, and which could be changed at the compiler implementers' convenience.
 They're sometimes doing some unexpected optimisations in cases like this, so check the cppreference link above if you want to learn more.
 
 So, we know what happens if we put in `INT_MAX`.
@@ -211,7 +217,7 @@ Signed integers are usually implemented using [two's complement](https://en.wiki
 While a value of type `int` is [usually](https://en.cppreference.com/w/cpp/language/types) 32 bits long, we will for simplicity look at a signed integer of 3 bits.
 In the table below, you can see how each combination of bits corresponds to an unsigned or signed integer value.
 
-| BIts | Unsigned Value | Signed Value |
+| Bits | Unsigned Value | Signed Value |
 | ---- | -------------- | ------------ |
 | 000  | 0              | 0            |
 | 001  | 1              | 1            |
@@ -231,23 +237,23 @@ When we have the value $3$ with bits `011`, and we add $1$, we get the binary re
 
 But this raises the question, what happens if we call `std::abs(INT_MIN)`?
 There is no valid bit representation of the smallest integer number's absolute value.
-Well, turns out, it's our good friend Undefined Behaviour again!
+Well, turns out, it's our good friend undefined behaviour again!
 [Cppreference](https://en.cppreference.com/w/cpp/numeric/math/abs) says "The behavior is undefined if the result cannot be represented by the return type."
 Checking `assert(std::abs(INT_MIN) == INT_MIN)` on [Compiler Explorer](https://godbolt.org/z/sjo9Eq65r) succeeds and both display the same value if printed.
 It effectively seems to be doing nothing.
 This is likely the result of how flipping a sign in two's complements is implemented.
 You just flip all the bits and add $1$.
 See how it behaves for some values in the table above!
-But again, this is Undefined Behaviour we're talking about in this case, so we better do something about it.
+But again, this is undefined behaviour we're talking about in this case, so we better do something about it.
 
 Well, what should you do about it?
 The simplest solution is to just limit your values to the interval $[-2^{30}, 2^{30}]$ or something similar?
 Our logic becomes really slow for large numbers anyway, so it's probably fine, depending on your use case.
 Alternatively, you can check for these edge cases and throw an exception.
 
-But not everything that is wrong is Undefined Behaviour or even necessarily wrong.
+But not everything that is wrong is undefined behaviour or even necessarily wrong.
 
-#### Obvious Inefficiencies
+#### Unnecessary Inefficiencies
 
 I'm sure some people have groaned out loud when I gave the loop of the form
 
@@ -256,8 +262,8 @@ for(auto i = 1; i <= max_abs(a); ++i)
 ```
 
 I explained above that a number is not cleanly divisible by a larger number.
-So, we can stop after reaching the largest number in `a` because larger numbers won't be divisible anymore, right?
-Well yes, but as soon as we pass the _smallest_ number in `a`, it won't be divisible anymore.
+So, we can stop after reaching the largest number in `a` because larger numbers won't be divisible any more, right?
+Well yes, but as soon as we pass the _smallest_ number in `a`, it won't be divisible any more.
 If `a` contains $3$ and $40$, there is no point in checking if $3$ is cleanly divisible by any number between $4$ and $40$, because there will always be a remainder of $3$.
 If there's a large difference between the smallest and the largest number, we may be doing a lot of unnecessary iterations!
 
@@ -279,7 +285,7 @@ Without going too deep into the thought process, the general idea was along thes
 3. With that, we've already established that $j$ divides `min_abs`. What point is there in doing a separate check and doing lots of potential divisions?
    However, I forgot that, while we know that $j$ divides `min_abs`, _we do not know whether $j$ divides all the other numbers in `a` or `b`_.
 
-As such, we will have to think of some other ways to achieve further speedups.
+As such, we will have to think of some other ways to achieve further speed-ups.
 Keep this idea in the back of your mind though.
 
 ### Decomposing `a`
@@ -452,14 +458,14 @@ Like for `a`, we can remove duplicates from `b`.
 We can also, if a number $x$ is a multiple of another number $y$, remove the number $y$.
 Any number that would divide $y$ would also divide its multiple $x$, so there's no need to check them both.
 Any number that divides $4$ will also divide $8$.
-Unfortunately, depending on the dataset, this doesn't gives us much of an advantage.
+Unfortunately, depending on the dataset, this doesn't give us much of an advantage.
 
 #### About the Least Common Multiple
 
 We've figured out how to reduce the checks on `a` to a single check.
 Now how do we do the same for `b`?
 My first idea was to attempt a similar strategy as for `a`, just instead of considering the greatest common divisor, we consider the least common multiple.
-If a number $x$ is divisible by another number $i$, than any multiple of $x$ will also be divisible by $i$.
+If a number $x$ is divisible by another number $i$, then any multiple of $x$ will also be divisible by $i$.
 So if any number in a set is divisible by $i$, their least common multiple will also be divisible by $i$.
 In other words, if the least common multiple is _not_ divisible by $i$, we can conclude that none of the numbers in the set are divisible by $i$!
 
@@ -506,7 +512,7 @@ For an example, let's say we're checking an $i$ of size $7$ against a set `b` of
 Say we just looked at the number $8$ and saw that it does not divide by $7$.
 We know that the next number after $8$ that $7$ does divide is $14$, so we can just skip doing a division for $11$ and $12$.
 In other words, if we look at $x$, the next number to consider has to have size at least $\left\lfloor \frac x i \right\rfloor\cdot i + i$, or `(x/i)*i+i` (remember that in C++ integer division automatically rounds down!), or even `x-(x%i)+i`.
-In a similar way, you immediately know that if all numbers in `b` are smaller than $i$, none of them can be divided by it.
+Similarly, you immediately know that if all numbers in `b` are smaller than $i$, none of them can be divided by it.
 Depending on the dataset, it may even make sense to check each multiple of $i$ instead of doing a single division.
 This might look something like this.
 
