@@ -182,6 +182,8 @@ Here, the worst-case runtime is bounded by $O(\max(a)\cdot(|a|+|b|))$.
 We are counting up the numbers up to the maximum number in a, $\max(a)$, assumed to be positive, and for each number, we check if it's divisible against each number in `a` and each number in `b`. In the worst case, we always run through all items up to the last item in `b` before proceeding to the next iteration.
 
 During the interview, we also talked touched on parallelisation (it parallelises very well if you put each iteration of the `find_divisor` loop on a new thread, but that's a topic for another time).
+That's as far as we got in the interview.
+I was told that there may be some better strategies, but the main goal was to see how I'd approach problems like this and to demonstrate my thought process.
 So all is good, right?
 
 ### Problems
