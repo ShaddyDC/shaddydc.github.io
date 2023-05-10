@@ -577,7 +577,7 @@ While this does not solve the general problem efficiently of finding if a number
 
 So, this is where we're at.
 We talked about some problems causing undefined behaviour, from integer overflows to the absolute values of `INT_MIN`.
-These are unfortunately aspects you'll always have to keep in the back of your mind when working with C++.
+These are unfortunately aspects you'll always have to keep in the back of your mind when working with C++, although you are also likely to encounter these in some form in many other languages.
 
 One way of dealing with it is the way rust does.
 There, a signed integer overflow is defined behaviour and works as if it was a modulo operation.
