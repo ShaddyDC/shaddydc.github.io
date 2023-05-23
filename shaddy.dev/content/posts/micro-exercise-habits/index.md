@@ -15,7 +15,7 @@ Balancing, yet stable as a rock, his fingers skittering across his raised foot, 
 I found this whole thing quite silly, so I asked him why he was being ridiculous (I probably was a very judgemental kid).
 He said -- to put words into his mouth because I don't remember his actual words and because he spoke German -- he said, "My boy, perchance peculiar I may seem to some; yet were their own standing challenged, as mine is daily, they should topple as a boulder. Why shan't I exploit each lull, however fleeting, to hone both body and mind?"
 
-"Wow", I thought, "my dad sounds like he's written by a really pretentious blogger to be entertaining."
+"Wow", I thought, "my dad sounds like he's written to be entertaining by a really pretentious blogger."
 But I also thought that he might be on to something.
 So ever since, I have been balancing on one leg while tying my shoes.
 
@@ -27,7 +27,7 @@ I have taken to calling this *Habitual Micro Exercises*, or just Micro Exercises
 
 Because these tiny habits are so easy to do, they can stick around for a long time, and you may continually benefit from them for the rest of your life.
 Obviously, this is not as good as extended, dedicated practice.
-Balancing on one leg for a bit each day won't make you a funambulist, a tightrope walker, but it might keep you from death from keeling over.
+Balancing on one leg for a bit each day won't make you a tightrope walker, but it might keep you from death from keeling over.
 Often, it is also possible to raise the difficulty for enhanced effect.
 For example, you can bend the standing leg, moving into a deeper crouch.
 
