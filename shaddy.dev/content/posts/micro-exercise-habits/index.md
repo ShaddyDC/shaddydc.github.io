@@ -10,7 +10,7 @@ When I was a kid, maybe around 10 years ago, and my father and I were readying f
 My father was just standing there on one leg, the other pulled close to his body, high in the air, like a flamingo.
 Balancing, yet stable as a rock, his fingers skittering across his raised foot, he tied his shoe in seconds.
 
-![Glorious balancing flamingo](flamingo.png)
+![Glorious anatomically inaccurate balancing flamingo](flamingo.png)
 
 I found this whole thing quite silly, so I asked him why he was being ridiculous (I probably was a very judgemental kid).
 He said -- to put words into his mouth because I don't remember his actual words and because he spoke German -- he said, "My boy, perchance peculiar I may seem to some; yet were their own standing challenged, as mine is daily, they should topple as a boulder. Why shan't I exploit each lull, however fleeting, to hone both body and mind?"
