@@ -1,6 +1,6 @@
 ---
-date: 2023-06-23
-description: There's an overwhelming amount of information on the internet. I'll share my strategies for curating a personalised content stream and optimising your internet experience.
+date: 2023-06-25
+description: There's an overwhelming amount of information on the internet. I'll share my strategies for curating a personalised content stream and optimising your internet experience. We will touch on RSS servers and clients, read-it-later apps, note extraction, and how they fit together.
 tag: Productivity, InformationManagement
 title: "My Content Consumption Pipeline: Efficient Information Management"
 ---
