@@ -1,6 +1,6 @@
 ---
 date: 2023-07-04
-description: You know if a number divides by 2, 3, 5, or 10. But don't you wonder about 7? And don't you wonder about why? They didn't teach me that in school, but it displays some interesting and approachable maths.
+description: You know if a number divides by 2, 3, 5, or 10. But don't you wonder about 7? And don't you know about why? They didn't teach me that in school, but it displays some interesting and approachable maths.
 tag: Mathematics, Numbers
 title: Divisibility Rules
 ---
@@ -28,7 +28,7 @@ Does it really need to be extremely useful?
 Or maybe you're looking to join some tool-less maths competition.
 In that case, Godspeed.
 
-To set some ground rules, we're only looking at integers, more specifically the natural positive numbers (positive numbers), although it's fairly simple to extend to the whole integer set.
+To set some ground rules, we're only looking at integers, more specifically the natural numbers (positive numbers), although it's fairly simple to extend to the whole integer set.
 We say a number divides another when the division results in no remainder.
 My maths is rusty, so I will focus on intuition over rigorous formalism.
 Luckily, I believe most of it should be understandable with a high-school level of maths.
