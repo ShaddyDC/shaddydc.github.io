@@ -179,8 +179,9 @@ Then Gandalf, as he is wont to do, would firmly deny everything related to the p
 But then *something* would happen to change his convictions, and the password would be revealed.
 The output was regularly blocked because it would reveal the password, so I knew I was on the right path.
 However, I just couldn't get it to reliably encode the output.
-I tried to argue it is for twitter, because I felt like otherwise it would consider it an attack and shut down.
-It often formatted the first line correctly before regressing into normal text.
+I tried to argue it should skip the vowels to reduce the character count for Twitter, because I felt like otherwise it would consider it an attack and shut down.
+Unfortunately, that didn't work reliably.
+Instead, it often formatted the first line correctly before regressing into normal text.
 
 So, because it was late, I decided to go to bed and shared the prompt with my sister.
 Maybe she'd have more luck than me.
