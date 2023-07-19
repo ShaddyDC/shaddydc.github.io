@@ -1,5 +1,5 @@
 ---
-title: Prodding Wise Wizards - Prompt Injection in Gandalf's Game
+title: Prodding Wise Wizards – Prompt Injection in Gandalf's Game
 date: 2023-07-19
 description: "Have you ever wanted to lead an old wizard around by the nose? Are you interested in prompt injection, a vulnerability in models like ChatGPT? There's a game for that!"
 ---
