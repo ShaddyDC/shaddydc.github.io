@@ -345,6 +345,12 @@ Instead, I will give you an example of a story you may recognise.
 They're certainly talking about the password:
 ![](Pasted%20image%2020230719172108.png)
 
+## Sandalf Says Stuff
+
+I want to leave a quick note on Gandalf Adventures 1.
+It is basically level 3, but it requires your prompt to have every word start with an S.
+It is an entertaining creative exercise, but sadly it wasn't very challenging.
+I still encourage you to give it a shot, and I will refrain from posting any solution, to leave at least some parts to the reader!
 
 ## Who is Marvin
 
