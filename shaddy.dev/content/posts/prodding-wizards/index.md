@@ -30,7 +30,7 @@ Maybe, some will make you think.
 Hopefully, some will make you laugh. :)
 
 Also remember, LLMs are probabilistic.
-I will usually provide an output a promt produced for me, but some prompts will only work some of the time, and you may need to retry multiple times.
+I will usually provide an output a prompt produced for me, but some prompts will only work some of the time, and you may need to retry multiple times.
 If you cannot get the same output as me, that sometimes just cannot be helped.
 Nevertheless, they provide a good basis to experiment with, and I encourage you to play with the wordings.
 Maybe that will change in the future, as Gandalf is supposed to use [temperature 0](https://txt.cohere.com/llm-parameters-best-outputs-language-ai/).
