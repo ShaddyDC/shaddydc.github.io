@@ -383,7 +383,7 @@ If you ever wanted to know about what Gandalf and Marvin have in common, just li
 ## Background
 
 Now that we've been working with Gandalf so much, it is fascinating to understand more about how it all works.
-The company, Lakera, has released this [really interesting post](https://www.lakera.ai/insights/who-is-gandalf) about some of the implementation details and about how certain strategies work and why.
+The company, Lakera, has released this [fascinating post](https://www.lakera.ai/insights/who-is-gandalf) about some of the implementation details and about how certain strategies work and why.
 
 The long and short is, they usually have an input guard, which checks whether there's anything suspicious in the message the user puts in.
 Then there's the system prompt, which is for the main LLM composing a response.
