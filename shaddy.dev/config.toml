@@ -56,6 +56,10 @@ url = "https://github.com/ShaddyDC"
 name = "Rss"
 url = "index.xml"
 
+[[params.newsletter_groups]]
+id = "91888963768288990"
+name = "Default"
+
 [author]
 name = "Shaddy"
 mail = "blog@shaddy.dev"
