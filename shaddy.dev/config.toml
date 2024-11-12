@@ -30,6 +30,11 @@ name = 'Projects'
 url = '/projects/'
 weight = 30
 [[menu.main]]
+pageRef = "notes"
+name = 'Notes'
+url = '/notes/'
+weight = 30
+[[menu.main]]
 pageRef = "about"
 name = 'About'
 url = '/about/'
