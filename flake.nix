@@ -2,7 +2,7 @@
   description = "Yomi-Dict is a yomidict dictionary reader";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     flake-utils.url = "github:numtide/flake-utils";
   };
