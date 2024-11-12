@@ -1,6 +1,6 @@
 baseURL = "https://shaddy.dev/"
 languageCode = "en-us"
-title = "Shaddy's Shallow Shelf"
+title = "Shaddy's"
 theme = "hugo-blog-awesome"
 
 defaultContentLanguage = "en-gb"
@@ -41,7 +41,7 @@ url = '/about/'
 weight = 40
 
 [params]
-sitename = "Shaddy's Shallow Shelf"
+sitename = "Shaddy's"
 defaultColor = "auto"
 description = "A place to dump thoughts"
 mainSections = ['posts']
@@ -49,7 +49,7 @@ mainSections = ['posts']
 [params.author]
 avatar = "avatar.png" # put the file in assets folder; also ensure that image has same height and width
 # Note: image is not rendered if the resource(avatar image) is not found. No error is displayed.
-intro = "Shaddy's Shallow Shelf"
+intro = "Shaddy's"
 name = "Shaddy"
 description = "Have you always wanted to read what such an important person as me has to say? Well, maybe you can find it here."
 
