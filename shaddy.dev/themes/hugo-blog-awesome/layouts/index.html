@@ -20,6 +20,18 @@
                 <a href="/posts/">See all posts</a>
             </p>
             {{ end }}
+            <h3 class="posts-item-note" aria-label="Recent Notes">Recent Notes</h3>
+            {{/* Show last 5 notes in reverse date order */}}
+            {{ $pagesToShow := where .Site.RegularPages "Type" "in" "notes" }}
+            {{ $notes := $pagesToShow.ByDate.Reverse }}
+            {{ range first 5 $notes }}
+            {{ partial "postCard" . }}
+            {{ end }}
+            {{ if gt (len $notes) 5 }}
+            <p>
+                <a href="/notes/">See all notes</a>
+            </p>
+            {{ end }}
         </main>
     </div>
     {{- partial "footer.html" . -}}
