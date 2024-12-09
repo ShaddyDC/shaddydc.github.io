@@ -1,0 +1,39 @@
+{{ define "main" }}
+<div class="wrapper post">
+  <main class="page-content" aria-label="Content">
+    <article>
+      <header class="header">
+        <h1 class="header-title">Available RSS Feeds</h1>
+      </header>
+      
+      <div class="page-content">
+        <p>Subscribe to these RSS feeds to stay updated with my content:</p>
+        
+        <!-- Main feed -->
+        <h2>Main Feed</h2>
+        <p>
+          <a href="{{ "index.xml" | absURL }}" class="feed-link">
+            Full Site Feed
+          </a>
+          <br>
+          <small>All content published on this site</small>
+        </p>
+
+        <!-- Section feeds -->
+        <h2>Section Feeds</h2>
+        {{ range where .Site.Sections "Kind" "section" }}
+          {{ if ne .RelPermalink "/" }}
+          <p>
+            <a href="{{ .RelPermalink }}index.xml" class="feed-link">
+              {{ .Title }} Feed
+            </a>
+            <br>
+            <small>{{ .Description | default (printf "All content in %s" .Title) }}</small>
+          </p>
+          {{ end }}
+        {{ end }}
+      </div>
+    </article>
+  </main>
+</div>
+{{ end }}
