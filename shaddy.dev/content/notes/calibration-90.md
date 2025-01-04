@@ -50,10 +50,11 @@ and adjust your intervals accordingly.
 But I still decided to take the more interesting approach and make a small website to gamify the
 process.
 Or, well, have AI generate the website for me, as well as some more questions as well as answers.
-I have done minimal checking of the solutions, but I figure these models are very good at trivia,
+~~I have done minimal checking of the solutions, but I figure these models are very good at trivia,
 2 models have mostly agreed on the accuracy of the remaining questions,
 and there is a disclaimer visible before you start.
-Just take your lack of faith into their reliability into account when giving your numbers. :)
+Just take your lack of faith into their reliability into account when giving your numbers. :)~~
+Answers are now moderately hand-checked, but let me know if anything is still wrong!
 
 There are many calibration quizzes out there on the internet already, but if you want to try this
 quick version, enjoy it [here](https://shaddy.dev/tinytools/?tool=calibration-quiz)!
