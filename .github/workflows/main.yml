@@ -38,7 +38,7 @@ jobs:
           cd shaddy.dev && nix develop -c hugo --gc --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: ./shaddy.dev/public
 
