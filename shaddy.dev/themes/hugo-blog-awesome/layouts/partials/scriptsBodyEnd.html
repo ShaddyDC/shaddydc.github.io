@@ -1,4 +1,5 @@
 {{ $script_main := resources.Get "js/themeSwitchnMenu.js" | minify | fingerprint }}
 <script src="{{ $script_main.RelPermalink }}"></script>
 
-{{- if or .Params.math .Site.Params.math }}{{ partial "helpers/mathjax.html" . -}}{{- end -}}
+{{/* Load KaTeX for LaTeX math rendering only when needed (per-post or site-wide) */}}
+{{- if or .Params.math .Site.Params.math }}{{ partial "helpers/katex.html" . -}}{{- end -}}

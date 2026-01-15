@@ -332,7 +332,6 @@ $$
 \gcd(y, x)\to\gcd(x, y\mod x).
 $$
 
-{{</mathjax >}}
 To look a at simple example from the same page, let's compute the greatest common divisor of $48$ and $18$:
 
 {{< mathjax >}}
@@ -345,7 +344,6 @@ $$
 \end{align*}
 $$
 
-{{</mathjax >}}
 So we can conclude that $\gcd(48, 18)=6$.
 
 So, let's put that to code!
