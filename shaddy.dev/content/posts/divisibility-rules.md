@@ -1,6 +1,7 @@
 ---
 date: 2023-07-04
 description: You know if a number divides by 2, 3, 5, or 10. But don't you wonder about 7? And don't you know about why? They didn't teach me that in school, but it displays some interesting and approachable maths.
+math: true
 tag: Mathematics, Numbers
 title: Divisibility Rules
 ---
