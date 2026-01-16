@@ -326,7 +326,6 @@ But wait, how do you compute the greatest common divisor of two numbers again?
 While this is not the fastest algorithm to compute the greatest common divisor of two numbers, it is fairly simple to understand and apply.
 I won't go into the intuition here, but the [Wikipedia page](https://en.wikipedia.org/wiki/Greatest_common_divisor#Euclid's_algorithm) gives a decent overview.
 It is based on the fact that, given two numbers $x$ and $y$ with $x<y$, it is
-{{< mathjax >}}
 
 $$
 \gcd(y, x)\to\gcd(x, y\mod x).
@@ -334,7 +333,6 @@ $$
 
 To look a at simple example from the same page, let's compute the greatest common divisor of $48$ and $18$:
 
-{{< mathjax >}}
 
 $$
 \begin{align*}

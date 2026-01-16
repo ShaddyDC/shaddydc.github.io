@@ -113,7 +113,6 @@ Let's say we've got the number $abc$, where each letter represents a digit.
 For example, for the number $123$ we'd have $a=1$, $b=2$, and $c=3$.
 In other words, we have $100a+10b+c$.
 We can pull out some numbers that we know divide by $9$ (and by extension $3$).
-{{< mathjax >}}
 $$
 100a+10b+c=99a+9b+a+b+c
 $$
@@ -174,12 +173,10 @@ Don't be worried if those terms make no sense to you, we will cover what we need
 
 Let's go back to our numbers.
 We want to check if the remainder is $0$, or in other words, if $3a+b$ is in the same class as $0$:
-{{< mathjax >}}
 $$
 3a+b\equiv_7 0.
 $$
 We can do some transformations we're used to from normal equations:
-{{< mathjax >}}
 $$
 3a\equiv_7 -b
 $$
@@ -214,7 +211,6 @@ This seems to be working.
 Feel free to look at some other examples, but you can think of it like the factor $3$ in whatever number we're dividing being instead set to a multiple of $7$, which is equivalent to a factor of $1$.
 
 But okay, so we know that
-{{< mathjax >}}
 $$
 a\equiv_7 -5b.
 $$
@@ -247,7 +243,6 @@ Let $cba$ be the number with each letter representing a group of 3 digits.
 Then we can also write the number as $a+1,000b+1,000,000c$, or $10^0a+10^3b+10^6c$.
 Like before, we subtract $7^n$ from each expression: $3^0a+3^3b+3^6c$.
 If we now look at $3^3$ inside our quotient ring, we have
-{{< mathjax >}}
 $$
 3^3\equiv_7 27\equiv_7 28-1\equiv_7 -1.
 $$
