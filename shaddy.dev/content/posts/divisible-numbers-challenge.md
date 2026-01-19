@@ -336,9 +336,9 @@ To look a at simple example from the same page, let's compute the greatest commo
 
 $$
 \begin{align*}
-        \gcd(48, 18)&\to\gcd(18, 48\mod 18) = \gcd(18, 12) \\
-                &\to \gcd(12, 18 \mod 12) = \gcd(12, 6) \\
-                &\to \gcd(6, 12 \mod 6) = \gcd(6, 0). \\
+        \gcd(48, 18)&\to\gcd(18, 48\mod 18) = \gcd(18, 12) \\\\
+                &\to \gcd(12, 18 \mod 12) = \gcd(12, 6) \\\\
+                &\to \gcd(6, 12 \mod 6) = \gcd(6, 0). \\\\
 \end{align*}
 $$
 
