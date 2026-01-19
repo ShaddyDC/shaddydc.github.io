@@ -1,6 +1,7 @@
 ---
 date: 2023-07-04
 description: You know if a number divides by 2, 3, 5, or 10. But don't you wonder about 7? And don't you know about why? They didn't teach me that in school, but it displays some interesting and approachable maths.
+math: true
 tag: Mathematics, Numbers
 title: Divisibility Rules
 ---
@@ -112,11 +113,9 @@ Let's say we've got the number $abc$, where each letter represents a digit.
 For example, for the number $123$ we'd have $a=1$, $b=2$, and $c=3$.
 In other words, we have $100a+10b+c$.
 We can pull out some numbers that we know divide by $9$ (and by extension $3$).
-{{< mathjax >}}
 $$
 100a+10b+c=99a+9b+a+b+c
 $$
-{{</mathjax >}}
 $99a$ will always divide by $9$, so if we subtract it, the remainder will divide by $9$ exactly if the whole sum divides by $9$.
 This is similar to how long division works if you think about it: subtracting increasingly small multiples of the divisor.
 In other words, the $100a+10b+c=$ will divide by $3$ or $9$ exactly if $a+b+c$ does.
@@ -174,17 +173,13 @@ Don't be worried if those terms make no sense to you, we will cover what we need
 
 Let's go back to our numbers.
 We want to check if the remainder is $0$, or in other words, if $3a+b$ is in the same class as $0$:
-{{< mathjax >}}
 $$
 3a+b\equiv_7 0.
 $$
-{{</mathjax >}}
 We can do some transformations we're used to from normal equations:
-{{< mathjax >}}
 $$
 3a\equiv_7 -b
 $$
-{{</mathjax >}}
 Now we want to divide both sides by 3.
 But how do we do that when we're working on integers?
 What if $b$ is like $2$ and doesn't cleanly divide by $3$?
@@ -216,11 +211,9 @@ This seems to be working.
 Feel free to look at some other examples, but you can think of it like the factor $3$ in whatever number we're dividing being instead set to a multiple of $7$, which is equivalent to a factor of $1$.
 
 But okay, so we know that
-{{< mathjax >}}
 $$
 a\equiv_7 -5b.
 $$
-{{</mathjax >}}
 
 Or in other words, $10a+b$ is divisible by $7$ if and only if $a+5b$ is.
 At this point, can you tell why $a-2b$ might do the same trick?
@@ -250,11 +243,9 @@ Let $cba$ be the number with each letter representing a group of 3 digits.
 Then we can also write the number as $a+1,000b+1,000,000c$, or $10^0a+10^3b+10^6c$.
 Like before, we subtract $7^n$ from each expression: $3^0a+3^3b+3^6c$.
 If we now look at $3^3$ inside our quotient ring, we have
-{{< mathjax >}}
 $$
 3^3\equiv_7 27\equiv_7 28-1\equiv_7 -1.
 $$
-{{</mathjax >}}
 So multiplying with $3^3$ is equivalent to multiplying with $-1$!
 Naturally, multiplying with $3^6$ is equivalent to multiplying with $(-1)^2=1$.
 This means that $10^0a+10^3b+10^6c$ is divisible by $7$ if and only if $1a-1b+1c$ is divisible by $7$.

@@ -2,6 +2,7 @@
 date: 2023-05-10
 description: Analysing a specific algorithmic problem with C++ and looking at some obvious and non-obvious problems and algorithmic performance improvements.
 draft: false
+math: true
 tags:
   - Programming
   - Algorithms
@@ -325,26 +326,22 @@ But wait, how do you compute the greatest common divisor of two numbers again?
 While this is not the fastest algorithm to compute the greatest common divisor of two numbers, it is fairly simple to understand and apply.
 I won't go into the intuition here, but the [Wikipedia page](https://en.wikipedia.org/wiki/Greatest_common_divisor#Euclid's_algorithm) gives a decent overview.
 It is based on the fact that, given two numbers $x$ and $y$ with $x<y$, it is
-{{< mathjax >}}
 
 $$
 \gcd(y, x)\to\gcd(x, y\mod x).
 $$
 
-{{</mathjax >}}
 To look a at simple example from the same page, let's compute the greatest common divisor of $48$ and $18$:
 
-{{< mathjax >}}
 
 $$
 \begin{align*}
-        \gcd(48, 18)&\to\gcd(18, 48\mod 18) = \gcd(18, 12) \\
-                &\to \gcd(12, 18 \mod 12) = \gcd(12, 6) \\
-                &\to \gcd(6, 12 \mod 6) = \gcd(6, 0). \\
+        \gcd(48, 18)&\to\gcd(18, 48\mod 18) = \gcd(18, 12) \\\\
+                &\to \gcd(12, 18 \mod 12) = \gcd(12, 6) \\\\
+                &\to \gcd(6, 12 \mod 6) = \gcd(6, 0). \\\\
 \end{align*}
 $$
 
-{{</mathjax >}}
 So we can conclude that $\gcd(48, 18)=6$.
 
 So, let's put that to code!
