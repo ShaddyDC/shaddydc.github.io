@@ -4,6 +4,7 @@ date = 2025-06-22T19:29:59+02:00
 description = "Are you brave enough to two-box?"
 tags = [
 "philosophy",
+"newcombs-problem",
 ]
 +++
 
