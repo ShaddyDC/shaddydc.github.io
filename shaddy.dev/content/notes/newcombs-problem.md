@@ -19,10 +19,10 @@ Wikipedia defines the problem [as follows](https://en.wikipedia.org/wiki/Newcomb
 
 > There are two agents: a reliable predictor and a player. Two boxes are designated A and B. The player is given a choice between taking only box B or taking both boxes A and B. The player knows the following:[4]
 > 
-> - Box A is transparent and always contains a visible \\$1,000.
+> - Box A is transparent and always contains a visible $1,000.
 > - Box B is opaque, and its content has already been set by the predictor:
 >   - If the predictor has predicted that the player will take both boxes A and B, then box B contains nothing.
->   - If the predictor has predicted that the player will take only box B, then box B contains \\$1,000,000.
+>   - If the predictor has predicted that the player will take only box B, then box B contains $1,000,000.
 > 
 > The player does not know what the predictor predicted or what box B contains while making the choice.
 > Game-theory strategies
@@ -33,10 +33,10 @@ if they opened the transparent box, the opaque box was empty;
 if they opened only the opaque box, it contained the money.
 Take a moment to yourself to think about how you'd approach the problem.
 
-I'll ignore the exact dollar values for now because \\$1,000 are easy to ignore if you're getting 1,000x that.
+I'll ignore the exact dollar values for now because $1,000 are easy to ignore if you're getting 1,000x that.
 The two-boxers will say that, obviously, by the time they can make the choice, the boxes are already filled.
 It's like the prisoner's dilemma: on a personal level, it's always better to defect.
-If the opaque box is full, then great, you get an extra \\$1,000.
+If the opaque box is full, then great, you get an extra $1,000.
 If not, then you get at least 1k, which is better than nothing.
  I will ignore strategies here like "open the opaque box first and then open the transparent box after" for simplicity
  and assume you can only open both at once, but I don't think it makes a substantial difference to the problem.
