@@ -1,7 +1,6 @@
 baseURL = "https://shaddy.dev/"
 languageCode = "en-gb"
 title = "Shaddy's"
-theme = "hugo-blog-awesome"
 
 defaultContentLanguage = "en-gb"
 
