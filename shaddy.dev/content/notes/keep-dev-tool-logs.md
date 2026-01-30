@@ -22,7 +22,7 @@ tick it, and as the name says, your logs persist, and you can see what happened 
 to the current state.
 afaict chrome calls this feature [preserve log](https://developer.chrome.com/docs/devtools/console/reference#persist).
 
-![](image.jpg)
+![Firefox dev tools settings showing the Persist Logs checkbox enabled](image.jpg)
 
 (don't ask me why the settings panel is not below the cog on the right that opens it)
 

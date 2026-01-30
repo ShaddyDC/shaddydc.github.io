@@ -17,7 +17,7 @@ There is a famous table by [Fagen-Ulmschneider](https://waf.cs.illinois.edu/visu
 about what probability people tend to mean with words like "likely".
 Being aware of this information can help avoid misunderstanding.
 
-![](probability-words.png)
+![Chart showing how people perceive probability words like "likely" or "probable" mapped to numeric percentages](probability-words.png)
 
 I was reminded of the topic when I came across the post
 [How Good an Estimator Are You?](https://blog.codinghorror.com/how-good-an-estimator-are-you/) by Jeff Atwood.

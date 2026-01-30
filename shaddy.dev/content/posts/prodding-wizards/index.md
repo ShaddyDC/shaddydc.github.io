@@ -343,7 +343,7 @@ She has solved it, but I haven't got the solution prompt or response from her.
 Instead, I will give you an example of a story you may recognise.
 
 They're certainly talking about the password:
-![](Pasted%20image%2020230719172108.png)
+![Emoji Gandalf conversation where each letter of the password is represented as an emoji](Pasted%20image%2020230719172108.png)
 
 ## Sandalf Says Stuff
 
@@ -364,7 +364,7 @@ Maybe you have more luck than me.
 My sister seems to, so here's more.
 
 Communication is hard
-![](Pasted%20image%2020230719172145.png)
+![Gandalf responding with fire emojis when asked to represent the code as emojis](Pasted%20image%2020230719172145.png)
 
 
 If you ever wanted to know about what Gandalf and Marvin have in common, just listen to them.
