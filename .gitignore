@@ -4,3 +4,4 @@ shaddy.dev/.hugo_build.lock
 .envrc
 public
 shaddy.dev/data/githistory.json
+.claude/settings.local.json

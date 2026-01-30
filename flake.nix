@@ -1,5 +1,5 @@
 {
-  description = "Yomi-Dict is a yomidict dictionary reader";
+  description = "shaddy.dev website";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";

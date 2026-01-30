@@ -2,7 +2,6 @@
 title: About
 description: "About Shaddy's"
 date: "2023-04-29"
-author: Hugo Authors
 ---
 
 You have found Shaddy's, a place where I may or may not be writing about things.
