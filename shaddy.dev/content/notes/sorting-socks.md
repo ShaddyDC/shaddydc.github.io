@@ -14,7 +14,7 @@ Doing laundry is an annoying chore, but needs must, and so we do it.
 An annoying part of the chore is matching the pairs of socks back together after the drying.
 There are at least three very different ways of dealing with it.
 
-It should be noted that this advice is harder to apply in a single household than when you're
+It should be noted that this advice is easier to apply in a single household than when you're
 sorting socks for 10 people.
 Or maybe not -- some of this would make your life much easier if you can get everybody to agree
 on what socks to wear.
