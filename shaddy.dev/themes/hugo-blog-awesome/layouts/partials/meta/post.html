@@ -21,13 +21,13 @@
     {
         "@context": "http://schema.org",
         "@type": "Article",
-        "headline": {{ .Title }},
+        "headline": {{ .Title | jsonify }},
         "author": {
         "@type": "Person",
         "name": "{{ .Site.Params.github }}"
         },
         "datePublished": "{{ dateFormat "2006-01-02" .Date }}",
-        "description": {{ .Description }},
+        "description": {{ .Description | jsonify }},
         "wordCount": {{ .WordCount }},
         "mainEntityOfPage": "True",
         "dateModified": "{{ dateFormat "2006-01-02" .Lastmod }}",
