@@ -2,20 +2,24 @@
 <meta http-equiv="content-type" content="text/html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title itemprop="name">{{ .Title }} | {{ .Site.Title }}</title>
-<meta property="og:title" content="{{ .Title }} | {{ .Site.Title }}" />
-<meta name="twitter:title" content="{{ .Title }} | {{ .Site.Title }}" />
-<meta itemprop="name" content="{{ .Title }} | {{ .Site.Title }}" />
-<meta name="application-name" content="{{ .Title }} | {{ .Site.Title }}" />
+{{- $title := .Site.Title -}}
+{{- if not .IsHome -}}
+  {{- $title = printf "%s | %s" .Title .Site.Title -}}
+{{- end }}
+<title itemprop="name">{{ $title }}</title>
+<meta property="og:title" content="{{ $title }}" />
+<meta name="twitter:title" content="{{ $title }}" />
+<meta itemprop="name" content="{{ $title }}" />
+<meta name="application-name" content="{{ $title }}" />
 <meta property="og:site_name" content="{{ .Site.Params.sitename }}" />
+<meta property="og:url" content="{{ .Permalink }}" />
 
-{{/*  Define empty variable description  */}}
+{{/*  Front matter description, else the start of the page content, else the site description  */}}
 {{- $description := "" -}}
-
-{{/*  If description is defined in front matter, use it  */}}
 {{- if .Params.description -}}
   {{- $description = trim .Params.description "\n" -}}
-{{/*  If description is not defined in front matter, use site description  */}}
+{{- else if and .IsPage .Summary -}}
+  {{- $description = .Summary | plainify | htmlUnescape | replaceRE `\s+` " " | strings.TrimSpace | truncate 160 -}}
 {{- else if .Site.Params.description -}}
   {{- $description = trim .Site.Params.description "\n" -}}
 {{- end -}}
@@ -31,14 +35,18 @@
   <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}" title="{{ .Language.Label }}" />
 {{ end }}
 
-{{ with .Params.image }}
-  <meta itemprop="image" content="{{ . | absURL }}" />
-  <meta property="og:image" content="{{ . | absURL }}" />
-  <meta name="twitter:image" content="{{ . | absURL }}" />
-  <meta name="twitter:image:src" content="{{ . | absURL }}" />
-{{ else }}
-  <meta itemprop="image" content="{{ .Site.Params.ogimage | absURL }}" />
-  <meta property="og:image" content="{{ .Site.Params.ogimage | absURL }}" />
-  <meta name="twitter:image" content="{{ .Site.Params.ogimage | absURL }}" />
-  <meta name="twitter:image:src" content="{{ .Site.Params.ogimage | absURL }}" />
+{{/*  Front matter image, else the site-wide ogimage, else the avatar  */}}
+{{- $image := "" -}}
+{{- with .Params.image -}}
+  {{- $image = . | absURL -}}
+{{- else with .Site.Params.ogimage -}}
+  {{- $image = . | absURL -}}
+{{- else with resources.Get .Site.Params.author.avatar -}}
+  {{- $image = .Permalink -}}
+{{- end -}}
+{{ with $image }}
+  <meta itemprop="image" content="{{ . }}" />
+  <meta property="og:image" content="{{ . }}" />
+  <meta name="twitter:image" content="{{ . }}" />
+  <meta name="twitter:card" content="summary" />
 {{ end }}
