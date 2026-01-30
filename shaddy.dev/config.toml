@@ -60,7 +60,3 @@ url = "https://github.com/ShaddyDC"
 [[params.socialIcons]]
 name = "RSS"
 url = "/feeds"
-
-[[params.newsletter_groups]]
-id = "91888963768288990"
-name = "Default"
