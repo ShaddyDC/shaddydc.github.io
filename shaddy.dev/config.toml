@@ -1,5 +1,5 @@
 baseURL = "https://shaddy.dev/"
-languageCode = "en-us"
+languageCode = "en-gb"
 title = "Shaddy's"
 theme = "hugo-blog-awesome"
 
