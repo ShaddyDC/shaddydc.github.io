@@ -9,6 +9,13 @@
           <time datetime="{{ $ISO_time }}" itemprop="datePublished">
             {{ .Date | time.Format ":date_medium" }}
           </time>
+          {{- with .GetTerms "tags" }}
+          <ul class="post-tags">
+            {{- range . }}
+            <li><a class="tag-item" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+            {{- end }}
+          </ul>
+          {{- end }}
         </div>
       </header>
       <div class="page-content">{{ .Content }}</div>

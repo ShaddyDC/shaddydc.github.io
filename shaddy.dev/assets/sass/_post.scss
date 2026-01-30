@@ -42,6 +42,31 @@
   }
 }
 
+.post-tags {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: inline-block;
+    margin: 0 0.3em 0.3em 0;
+  }
+
+  .tag-item {
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: $small-font-size;
+    color: inherit;
+    background-color: rgba(128, 128, 128, 0.12);
+    text-decoration: none;
+
+    &:hover {
+      background-color: rgba(128, 128, 128, 0.25);
+    }
+  }
+}
+
 // Post content
 .page-content {
   padding-top: 8px;
