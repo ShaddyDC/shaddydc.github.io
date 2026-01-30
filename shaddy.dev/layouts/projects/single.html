@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.Language.Locale }}">
     <head>
+        <meta charset="utf-8">
+        <title>{{ .Title }} | {{ .Site.Title }}</title>
+        <meta name="robots" content="noindex">
+        <link rel="canonical" href="{{ .Params.projectUrl }}">
         <meta http-equiv="Refresh" content="0; url='{{ .Params.projectUrl }}'" />
     </head>
-    <body data-theme="{{ .Site.Params.defaultColor }}" class="notransition">
-        <p>You will be redirected to {{ .Params.projectUrl }}</p>
+    <body>
+        <p>You will be redirected to <a href="{{ .Params.projectUrl }}">{{ .Params.projectUrl }}</a></p>
     </body>
 </html>

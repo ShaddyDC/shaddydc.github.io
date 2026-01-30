@@ -60,3 +60,10 @@ url = "https://github.com/ShaddyDC"
 [[params.socialIcons]]
 name = "RSS"
 url = "/feeds"
+
+# Project pages are just redirects to the repos; keep them out of the sitemap
+[[cascade]]
+[cascade.sitemap]
+disable = true
+[cascade.target]
+path = "/projects/**"
