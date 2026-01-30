@@ -1,5 +1,6 @@
 +++
-title = "More Ovoerconfidence"
+title = "More Overconfidence"
+aliases = ["/notes/more-ovoerconfidence/"]
 date = 2024-12-17T22:45:40+01:00
 description = ""
 tags = [
