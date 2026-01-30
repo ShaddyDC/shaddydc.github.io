@@ -1,5 +1,5 @@
 baseURL = "https://shaddy.dev/"
-languageCode = "en-gb"
+locale = "en-gb"
 title = "Shaddy's"
 
 defaultContentLanguage = "en-gb"
@@ -50,6 +50,7 @@ avatar = "avatar.png" # put the file in assets folder; also ensure that image ha
 # Note: image is not rendered if the resource(avatar image) is not found. No error is displayed.
 intro = "Shaddy's"
 name = "Shaddy"
+mail = "blog@shaddy.dev"
 description = "Have you always wanted to read what such an important person as me has to say? Well, maybe you can find it here."
 
 [[params.socialIcons]]
@@ -63,7 +64,3 @@ url = "/feeds"
 [[params.newsletter_groups]]
 id = "91888963768288990"
 name = "Default"
-
-[author]
-name = "Shaddy"
-mail = "blog@shaddy.dev"

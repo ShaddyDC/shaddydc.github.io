@@ -1,6 +1,6 @@
 {{ with .File }}
   {{ $path := .Path }}
-  {{ with index $.Site.Data "githistory" }}
+  {{ with index hugo.Data "githistory" }}
     {{ $history := index . $path }}
     {{ if and $history (gt (len $history) 1) }}
     <details class="git-history">
