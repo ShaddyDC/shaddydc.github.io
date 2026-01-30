@@ -19,7 +19,7 @@ in-laws grill you on your opener preferences.
 If you grew up playing Tetris on the NES or other platforms of that generation,
 you likely played classic Tetris.
 Classic Tetris is more punishing than more modern variants.
-Pieces are almost fully random[^1], and you don't have a preview for what comes next, meaning you will have to make decisions on the spot.
+Pieces are almost fully random[^1], and you can only see one piece ahead, meaning you will have to make decisions on the spot.
 This makes it significantly harder to stack cleanly, to keep your board structured and flexible,
 and you can have a "drought" of pieces, where you are waiting for that one piece
 you want for a long time with no guarantees for when you will see it next.
@@ -87,8 +87,8 @@ How can they process what piece comes up, think about where to put it in a poten
 perform the inputs, and drop it -- and then do that 7 times per second?
 This is where modern Tetris comes with some nice quality of life features.
 The first one is the preview.
-You can usually see at least one piece ahead while placing your current piece,
-and often you can see the queue up to 5 spots.
+Where in classic Tetris you can see one piece ahead,
+in modern Tetris you can often see the queue up to the next 5 spots.
 Knowing the next pieces gives you time in advance to think about where to place each,
 so once it comes up, no thinking is needed anymore and your body only needs to perform the inputs.
 The process is effectively parallelised, or pipelined if you know how a CPU processes instructions.
