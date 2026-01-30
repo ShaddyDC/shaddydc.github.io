@@ -3,3 +3,4 @@ shaddy.dev/.hugo_build.lock
 .direnv
 .envrc
 public
+shaddy.dev/data/githistory.json

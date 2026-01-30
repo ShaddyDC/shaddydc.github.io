@@ -27,11 +27,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
       - uses: cachix/install-nix-action@v31
 
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v6
+
+      - name: Generate git history
+        run: python3 scripts/generate-git-history.py
 
       - name: Build
         run: |

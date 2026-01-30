@@ -1,0 +1,19 @@
+{{ with .File }}
+  {{ $path := .Path }}
+  {{ with index $.Site.Data "githistory" }}
+    {{ $history := index . $path }}
+    {{ if and $history (gt (len $history) 1) }}
+    <details class="git-history">
+      <summary>Page history ({{ len $history }} revisions)</summary>
+      <ul>
+        {{ range $history }}
+        <li>
+          <time datetime="{{ .date }}">{{ .date | time.Format ":date_medium" }}</time>
+          <a href="https://github.com/ShaddyDC/shaddydc.github.io/commit/{{ .hash }}">{{ .subject }}</a>
+        </li>
+        {{ end }}
+      </ul>
+    </details>
+    {{ end }}
+  {{ end }}
+{{ end }}

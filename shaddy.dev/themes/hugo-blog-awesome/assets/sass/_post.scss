@@ -233,3 +233,43 @@
 .post-updated-at {
   font-family: "Ubuntu mono", "monospace";
 }
+
+// Git history section
+.git-history {
+  margin-top: $spacing-full;
+  border-top: 1px solid $light;
+  padding-top: $spacing-half;
+  font-size: $small-font-size;
+
+  summary {
+    cursor: pointer;
+    color: $gray;
+
+    &:hover {
+      color: $black;
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: $spacing-half;
+
+    li {
+      padding: 4px 0;
+      display: flex;
+      gap: 0.75em;
+      border-bottom: 1px solid $light;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      time {
+        color: $gray;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+    }
+  }
+}
