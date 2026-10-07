@@ -1,0 +1,21 @@
+{{/*
+  Map of page path -> pages that link to it, built once per build from the
+  rendered content of every page. Call with partialCached.
+*/}}
+{{- $links := newScratch -}}
+{{- $base := strings.TrimSuffix "/" site.BaseURL -}}
+{{- range site.RegularPages -}}
+  {{- $source := . -}}
+  {{- $seen := slice -}}
+  {{- range findRESubmatch `href="([^"#?]*)` .Content -}}
+    {{- $target := index . 1 | strings.TrimPrefix $base -}}
+    {{- if and (hasPrefix $target "/") (not (hasSuffix $target "/")) (not (strings.Contains (path.Base $target) "."))  -}}
+      {{- $target = printf "%s/" $target -}}
+    {{- end -}}
+    {{- if and (hasPrefix $target "/") (ne $target $source.RelPermalink) (not (in $seen $target)) -}}
+      {{- $seen = $seen | append $target -}}
+      {{- $links.Add $target (slice $source) -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $links.Values -}}

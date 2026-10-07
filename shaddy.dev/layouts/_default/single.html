@@ -34,6 +34,7 @@
       </details>
       {{- end }}
       <div class="page-content">{{ .Content }}</div>
+      {{- partial "connections.html" . -}}
       {{- partial "git-history.html" . -}}
     </article>
   </main>

@@ -1,0 +1,36 @@
+{{/* Backlinks and related pages, shown under posts and notes */}}
+{{- if in (slice "posts" "notes") .Section -}}
+  {{- $linkmap := partialCached "helpers/linkmap.html" . "linkmap" -}}
+  {{- $backlinks := (index $linkmap .RelPermalink) | default slice -}}
+  {{- $related := slice -}}
+  {{- range .Site.RegularPages.Related . -}}
+    {{- if and (in (slice "posts" "notes") .Section) (not (in $backlinks .)) -}}
+      {{- $related = $related | append . -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $related = first 4 $related -}}
+  {{- if or $backlinks $related }}
+  <aside class="connections">
+    {{- with $backlinks }}
+    <section>
+      <h2>Linked from</h2>
+      <ul>
+        {{- range .ByDate.Reverse }}
+        <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+        {{- end }}
+      </ul>
+    </section>
+    {{- end }}
+    {{- with $related }}
+    <section>
+      <h2>Related</h2>
+      <ul>
+        {{- range . }}
+        <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+        {{- end }}
+      </ul>
+    </section>
+    {{- end }}
+  </aside>
+  {{- end }}
+{{- end -}}

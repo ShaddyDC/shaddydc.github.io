@@ -337,3 +337,31 @@ h2, h3, h4, h5, h6 {
     margin: 0.15em 0;
   }
 }
+
+// Backlinks and related pages
+.connections {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-half $spacing-full;
+  margin-top: $spacing-full;
+  padding-top: $spacing-half;
+  border-top: 1px solid rgba(128, 128, 128, 0.25);
+
+  section {
+    flex: 1 1 250px;
+  }
+
+  h2 {
+    margin: 0 0 0.4em;
+    font-size: $small-font-size;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: $gray;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 1.1em;
+  }
+}

@@ -19,6 +19,15 @@ unsafe = true
 startLevel = 2
 endLevel = 3
 
+# Related pages are picked by shared tags
+[related]
+includeNewer = true
+threshold = 1
+toLower = true
+[[related.indices]]
+name = "tags"
+weight = 100
+
 [menu]
 [[menu.main]]
 # The page reference (pageRef) is useful for menu highlighting
