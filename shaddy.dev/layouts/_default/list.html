@@ -2,6 +2,9 @@
 <div class="wrapper list-page">
     <header class="header">
         <h1 class="header-title center">{{ .Title }}</h1>
+        {{- if eq .Section "notes" }}
+        <p class="random-note-header">{{ partial "random-note.html" . }}</p>
+        {{- end }}
     </header>
     <main class="page-content" aria-label="Content">
         {{ range .Pages.GroupByDate "2006" }}

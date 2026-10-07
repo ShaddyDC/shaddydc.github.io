@@ -412,3 +412,18 @@ h2, h3, h4, h5, h6 {
     background-color: transparent;
   }
 }
+
+// Random note link
+.random-note {
+  font-size: $small-font-size;
+}
+
+.random-note-header {
+  margin-top: 0.5em;
+  text-align: center;
+}
+
+.random-note-footer {
+  margin-top: $spacing-half;
+  text-align: right;
+}

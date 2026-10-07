@@ -35,6 +35,9 @@
       {{- end }}
       <div class="page-content">{{ .Content }}</div>
       {{- partial "connections.html" . -}}
+      {{- if eq .Section "notes" }}
+      <p class="random-note-footer">{{ partial "random-note.html" . }}</p>
+      {{- end }}
       {{- partial "git-history.html" . -}}
     </article>
   </main>

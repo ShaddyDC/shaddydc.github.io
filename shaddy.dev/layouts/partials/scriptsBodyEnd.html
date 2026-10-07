@@ -6,3 +6,7 @@
 {{- end }}
 {{ $previews := resources.Get "js/previews.js" | minify | fingerprint }}
 <script src="{{ $previews.RelPermalink }}" defer></script>
+{{- if eq .Section "notes" }}
+{{ $random := resources.Get "js/random.js" | minify | fingerprint }}
+<script src="{{ $random.RelPermalink }}" defer></script>
+{{- end }}
