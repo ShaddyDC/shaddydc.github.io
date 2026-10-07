@@ -365,3 +365,50 @@ h2, h3, h4, h5, h6 {
     padding-left: 1.1em;
   }
 }
+
+// Sidenotes (see js/sidenotes.js); only shown when there is room in the margin
+.sidenote {
+  display: none;
+}
+
+.has-sidenotes {
+  position: relative;
+
+  .footnotes {
+    display: none;
+  }
+
+  .sidenote {
+    display: block;
+    position: absolute;
+    left: calc(100% + 40px);
+    width: 220px;
+    font-size: $small-font-size;
+    line-height: 1.45;
+    color: $gray;
+
+    p {
+      margin: 0 0 0.4em;
+    }
+
+    &.flash {
+      animation: sidenote-flash 1.2s ease-out;
+    }
+  }
+
+  .sidenote-number {
+    margin-right: 0.35em;
+    font-weight: bold;
+    vertical-align: super;
+    font-size: 0.75em;
+  }
+}
+
+@keyframes sidenote-flash {
+  from {
+    background-color: rgba(119, 168, 253, 0.35);
+  }
+  to {
+    background-color: transparent;
+  }
+}

@@ -1,2 +1,6 @@
 {{ $script_main := resources.Get "js/themeSwitchnMenu.js" | minify | fingerprint }}
 <script src="{{ $script_main.RelPermalink }}"></script>
+{{- if and .IsPage (strings.Contains .Content "footnote-ref") }}
+{{ $sidenotes := resources.Get "js/sidenotes.js" | minify | fingerprint }}
+<script src="{{ $sidenotes.RelPermalink }}"></script>
+{{- end }}
