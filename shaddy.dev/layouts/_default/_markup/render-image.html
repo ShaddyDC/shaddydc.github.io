@@ -1,0 +1,31 @@
+{{- /*
+  Page-bundle images are converted to webp at 1x/2x the content width, get
+  their dimensions (no layout shift) and lazy loading, and link to the
+  original. Anything else (remote URLs, gif/svg) is passed through as-is.
+*/ -}}
+{{- $src := .Destination -}}
+{{- $img := .Page.Resources.Get (urls.Parse .Destination).Path -}}
+{{- $alt := .PlainText -}}
+{{- if and $img (in (slice "png" "jpg" "jpeg" "webp") $img.MediaType.SubType) -}}
+  {{- $widths := slice 660 1320 -}}
+  {{- $srcset := slice -}}
+  {{- $default := $img -}}
+  {{- range $widths -}}
+    {{- if le . $img.Width -}}
+      {{- $r := $img.Resize (printf "%dx webp" .) -}}
+      {{- $srcset = $srcset | append (printf "%s %dw" $r.RelPermalink .) -}}
+      {{- if eq . 660 }}{{ $default = $r }}{{ end -}}
+    {{- end -}}
+  {{- end -}}
+  {{- if eq $default $img }}{{ $default = $img.Process "webp" }}{{ end -}}
+  {{- $width := $default.Width -}}
+  {{- $height := $default.Height -}}
+  <a href="{{ $img.RelPermalink }}" class="image-link">
+    <img src="{{ $default.RelPermalink }}"
+      {{- with $srcset }} srcset="{{ delimit . ", " }}" sizes="(max-width: 720px) 100vw, 660px"{{ end }}
+      width="{{ $width }}" height="{{ $height }}" alt="{{ $alt }}"{{ with .Title }} title="{{ . }}"{{ end }}
+      loading="lazy" decoding="async">
+  </a>
+{{- else -}}
+  <img src="{{ $src | safeURL }}" alt="{{ $alt }}"{{ with .Title }} title="{{ . }}"{{ end }} loading="lazy" decoding="async">
+{{- end -}}

@@ -76,3 +76,6 @@ url = "/feeds"
 disable = true
 [cascade.target]
 path = "/projects/**"
+
+[imaging.webp]
+quality = 85
