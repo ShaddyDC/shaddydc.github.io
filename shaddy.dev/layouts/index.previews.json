@@ -1,0 +1,13 @@
+{{- $previews := dict -}}
+{{- range where site.RegularPages "Section" "in" (slice "posts" "notes") -}}
+  {{- $summary := .Description -}}
+  {{- if not $summary -}}
+    {{- $summary = .Summary | replaceRE `<a class="heading-anchor"[^>]*>#</a>` " " | plainify | htmlUnescape | replaceRE `\s+` " " | strings.TrimSpace | truncate 240 -}}
+  {{- end -}}
+  {{- $previews = merge $previews (dict .RelPermalink (dict
+      "title" .Title
+      "date" (.Date | time.Format ":date_medium")
+      "summary" $summary
+  )) -}}
+{{- end -}}
+{{- $previews | jsonify -}}

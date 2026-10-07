@@ -28,6 +28,16 @@ toLower = true
 name = "tags"
 weight = 100
 
+# Index of page titles/summaries for link hover previews (js/previews.js)
+[outputFormats.previews]
+mediaType = "application/json"
+baseName = "previews"
+isPlainText = true
+notAlternative = true
+
+[outputs]
+home = ["html", "rss", "previews"]
+
 [menu]
 [[menu.main]]
 # The page reference (pageRef) is useful for menu highlighting

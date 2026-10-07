@@ -39,3 +39,45 @@
     position: absolute;
   }
 }
+
+// Link hover previews (see js/previews.js)
+.link-preview {
+  position: absolute;
+  z-index: 100;
+  max-width: 340px;
+  padding: 0.7em 0.9em;
+  border-radius: 6px;
+  border: 1px solid rgba(128, 128, 128, 0.25);
+  background-color: $white;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+  font-size: $small-font-size;
+  line-height: 1.45;
+  pointer-events: none;
+
+  strong {
+    display: block;
+    color: $black;
+  }
+
+  time {
+    color: $gray;
+  }
+
+  p {
+    margin: 0.4em 0 0;
+  }
+}
+
+html.dark .link-preview {
+  border-color: $dark-smoke;
+  background-color: $dark-light;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
+
+  strong {
+    color: $dark-white;
+  }
+
+  time {
+    color: $dark-gray;
+  }
+}

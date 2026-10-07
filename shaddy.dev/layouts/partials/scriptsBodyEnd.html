@@ -4,3 +4,5 @@
 {{ $sidenotes := resources.Get "js/sidenotes.js" | minify | fingerprint }}
 <script src="{{ $sidenotes.RelPermalink }}"></script>
 {{- end }}
+{{ $previews := resources.Get "js/previews.js" | minify | fingerprint }}
+<script src="{{ $previews.RelPermalink }}" defer></script>
