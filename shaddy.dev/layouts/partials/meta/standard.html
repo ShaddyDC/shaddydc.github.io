@@ -19,7 +19,7 @@
 {{- if .Params.description -}}
   {{- $description = trim .Params.description "\n" -}}
 {{- else if and .IsPage .Summary -}}
-  {{- $description = .Summary | plainify | htmlUnescape | replaceRE `\s+` " " | strings.TrimSpace | truncate 160 -}}
+  {{- $description = .Summary | replaceRE `<a class="heading-anchor"[^>]*>#</a>` " " | plainify | htmlUnescape | replaceRE `\s+` " " | strings.TrimSpace | truncate 160 -}}
 {{- else if .Site.Params.description -}}
   {{- $description = trim .Site.Params.description "\n" -}}
 {{- end -}}

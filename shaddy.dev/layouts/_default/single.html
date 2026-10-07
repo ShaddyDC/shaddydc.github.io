@@ -26,6 +26,13 @@
           {{- end }}
         </div>
       </header>
+      {{- $headings := findRE `<h[23][ >]` .Content -}}
+      {{- if and (.Params.toc | default (and (gt .WordCount 1500) (ge (len $headings) 3))) .TableOfContents }}
+      <details class="toc" open>
+        <summary>Contents</summary>
+        {{ .TableOfContents }}
+      </details>
+      {{- end }}
       <div class="page-content">{{ .Content }}</div>
       {{- partial "git-history.html" . -}}
     </article>

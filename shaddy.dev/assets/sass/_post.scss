@@ -298,3 +298,42 @@
     }
   }
 }
+
+// Heading anchors, visible on hover/focus
+.heading-anchor {
+  margin-left: 0.3em;
+  font-weight: normal;
+  color: $gray;
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 0.1s ease-in;
+}
+
+h2, h3, h4, h5, h6 {
+  &:hover .heading-anchor,
+  .heading-anchor:focus {
+    opacity: 1;
+  }
+}
+
+// Table of contents
+.toc {
+  margin: $spacing-full 0;
+  padding: $spacing-half $spacing-full;
+  border-left: 3px solid rgba(128, 128, 128, 0.3);
+  font-size: $small-font-size;
+
+  summary {
+    cursor: pointer;
+    color: $gray;
+  }
+
+  ul {
+    margin: 0.3em 0 0 1.2em;
+    padding: 0;
+  }
+
+  li {
+    margin: 0.15em 0;
+  }
+}
