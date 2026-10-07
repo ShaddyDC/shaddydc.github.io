@@ -44,7 +44,12 @@
     }
 
   
-    a#mode {
+    #mode {
+      padding: 0;
+      border: 0;
+      background: none;
+      color: inherit;
+      font: inherit;
       -webkit-transform: scale(1, 1);
       transform: scale(1, 1);
       opacity: 0.7;
@@ -148,7 +153,7 @@
       background-color: $white;
       border-bottom: 1px solid $light;
   
-      a#mode {
+      #mode {
         left: 10px;
         top: 12px;
       }
