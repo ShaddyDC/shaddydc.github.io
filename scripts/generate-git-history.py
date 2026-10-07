@@ -16,7 +16,7 @@ CONTENT_DIR = os.path.join(REPO_ROOT, "shaddy.dev", "content")
 OUTPUT_FILE = os.path.join(REPO_ROOT, "shaddy.dev", "data", "githistory.json")
 
 SEPARATOR = "---GIT-HISTORY-SEP---"
-LOG_FORMAT = f"%H%n%ai%n%s%n{SEPARATOR}"
+LOG_FORMAT = f"%H%n%cI%n%s%n{SEPARATOR}"
 
 
 def get_history(filepath):

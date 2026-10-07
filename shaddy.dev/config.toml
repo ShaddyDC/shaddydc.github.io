@@ -3,6 +3,12 @@ locale = "en-gb"
 title = "Shaddy's"
 
 defaultContentLanguage = "en-gb"
+enableGitInfo = true
+
+# Git author dates are unreliable here (see partials/helpers/lastmod.html), so
+# keep .Lastmod off git; templates use the commit date via that helper instead.
+[frontmatter]
+lastmod = ["lastmod", "date", "publishDate"]
 
 [markup]
 [markup.highlight]

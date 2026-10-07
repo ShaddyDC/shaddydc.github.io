@@ -1,0 +1,8 @@
+{{/*
+  Last modification time of a page: the commit date of the last commit that
+  touched it. Author dates are not reliable in this repo (jj rewrites keep the
+  original author timestamp), so .Lastmod from :git is not used.
+*/}}
+{{- $lastmod := .Lastmod -}}
+{{- with .GitInfo }}{{ $lastmod = .CommitDate }}{{ end -}}
+{{- return $lastmod -}}

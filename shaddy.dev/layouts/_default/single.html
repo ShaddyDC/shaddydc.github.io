@@ -9,6 +9,14 @@
           <time datetime="{{ $ISO_time }}" itemprop="datePublished">
             {{ .Date | time.Format ":date_medium" }}
           </time>
+          {{- $lastmod := partial "helpers/lastmod.html" . }}
+          {{- if gt ($lastmod.Sub .Date).Hours 24 }}
+          <span class="post-updated">updated
+            <time datetime="{{ dateFormat "2006-01-02T15:04:05-07:00" $lastmod }}" itemprop="dateModified">
+              {{ $lastmod | time.Format ":date_medium" }}
+            </time>
+          </span>
+          {{- end }}
           {{- with .GetTerms "tags" }}
           <ul class="post-tags">
             {{- range . }}
