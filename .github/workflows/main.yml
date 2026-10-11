@@ -38,6 +38,14 @@ jobs:
       - name: Generate git history
         run: python3 scripts/generate-git-history.py
 
+      - name: Check KaTeX CSS matches Hugo
+        run: |
+          nix develop -c python3 scripts/sync-katex-css.py
+          if [ -n "$(git status --porcelain -- shaddy.dev/static)" ]; then
+            echo "::error::Vendored KaTeX CSS doesn't match Hugo's KaTeX; run scripts/sync-katex-css.py"
+            exit 1
+          fi
+
       - name: Build
         run: |
           cd shaddy.dev && nix develop -c hugo --gc --minify

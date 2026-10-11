@@ -1,7 +1,7 @@
 {{/*
   KaTeX styles and fonts (vendored, woff2 only). The CSS must match the KaTeX
-  version embedded in Hugo (0.18.4 as of Hugo 0.166), as class names change
-  between versions.
+  version embedded in Hugo, as class names change between versions;
+  scripts/sync-katex-css.py updates it, and CI does so on Renovate PRs.
 
   Math is rendered to HTML at build time by render-passthrough.html; this only
   loads the stylesheet. Included when `math: true` is set in post frontmatter

@@ -1,0 +1,40 @@
+name: Sync KaTeX CSS
+
+# Renovate bumps Hugo through flake.lock but can't run scripts, so keep the
+# vendored KaTeX CSS in line with Hugo's built-in KaTeX on its PRs here.
+on:
+  pull_request:
+    branches: [master]
+    paths: [flake.lock, flake.nix]
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  sync:
+    if: startsWith(github.head_ref, 'renovate/')
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: cachix/install-nix-action@v31
+
+      - name: Sync KaTeX CSS
+        run: nix develop -c python3 scripts/sync-katex-css.py
+
+      - name: Commit changes
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          git add shaddy.dev/static
+          git diff --cached --quiet && exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "layout: Sync KaTeX CSS with Hugo"
+          git push
+          # Pushes with the workflow token don't trigger workflows, so build the new commit explicitly
+          gh workflow run main.yml --ref "$BRANCH"
