@@ -15,6 +15,12 @@ lastmod = ["lastmod", "date", "publishDate"]
 noClasses = false
 [markup.goldmark.renderer]
 unsafe = true
+# Math is rendered at build time; see layouts/_default/_markup/render-passthrough.html
+[markup.goldmark.extensions.passthrough]
+enable = true
+[markup.goldmark.extensions.passthrough.delimiters]
+block = [["$$", "$$"]]
+inline = [["$", "$"]]
 [markup.tableOfContents]
 startLevel = 2
 endLevel = 3

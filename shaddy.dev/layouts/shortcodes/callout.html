@@ -23,6 +23,6 @@
 <div class="callout" style="">
   <blockquote>
     <div>{{ .Get "title" }}</div>
-    <div class="callout-inner">{{ .Inner }}</div>
+    <div class="callout-inner">{{ .Inner | .Page.RenderString }}</div>
   </blockquote>
 </div>

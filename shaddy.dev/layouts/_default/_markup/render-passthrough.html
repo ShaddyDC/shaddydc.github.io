@@ -1,0 +1,20 @@
+{{- /*
+  $...$ and $$...$$ are rendered to KaTeX HTML+MathML at build time on pages
+  with `math: true`. Elsewhere a $ is just a dollar sign, so the text between
+  two of them still gets the usual markdown treatment (smart quotes etc).
+*/ -}}
+{{- $block := eq .Type "block" -}}
+{{- if or .Page.Params.math site.Params.math -}}
+  {{- with try (transform.ToMath .Inner (dict "displayMode" $block "output" "htmlAndMathml")) -}}
+    {{- with .Err -}}
+      {{- errorf "Failed to render math in %s: %s" $.Position . -}}
+    {{- else -}}
+      {{- .Value -}}
+    {{- end -}}
+  {{- end -}}
+{{- else -}}
+  {{- $d := cond $block "$$" "$" -}}
+  {{- $lead := replaceRE `(?s)^(\s*).*$` "$1" .Inner -}}
+  {{- $trail := replaceRE `(?s)^.*?(\s*)$` "$1" .Inner -}}
+  {{- printf "%s%s%s%s%s" $d $lead (.Page.RenderString .Inner) $trail $d | safeHTML -}}
+{{- end -}}

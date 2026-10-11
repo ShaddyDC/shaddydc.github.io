@@ -1,8 +1,11 @@
 {{/*
-  KaTeX LaTeX rendering (vendored)
+  KaTeX styles and fonts (vendored, woff2 only). The CSS must match the KaTeX
+  version embedded in Hugo (0.18.4 as of Hugo 0.166), as class names change
+  between versions.
 
-  Loaded conditionally when `math: true` is set in post frontmatter or site params.
-  Automatically renders LaTeX math expressions with the following delimiters:
+  Math is rendered to HTML at build time by render-passthrough.html; this only
+  loads the stylesheet. Included when `math: true` is set in post frontmatter
+  or site params. Delimiters:
   - Inline math: $...$
   - Display math: $$...$$
 
@@ -13,14 +16,3 @@
   ---
 */}}
 <link rel="stylesheet" href="/css/katex/katex.min.css" />
-
-<!-- The loading of KaTeX is deferred to speed up page rendering -->
-<script defer src="/js/katex/katex.min.js"></script>
-
-<!-- To automatically render math in text elements, include the auto-render extension: -->
-<script defer src="/js/katex/auto-render.min.js" onload="renderMathInElement(document.body, {
-      delimiters: [
-        {left: '$$', right: '$$', display: true},
-        {left: '$', right: '$', display: false}
-      ]
-    });"></script>

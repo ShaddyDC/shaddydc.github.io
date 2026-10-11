@@ -164,9 +164,9 @@ We can again write the number as $10a+b$ like we did for division by $9$.
 Similarly, we can subtract $7$ from the left: $3a+b$.
 We say that this is divisible by $7$ exactly if $a+5b$ is.
 In fact, I'm going to make an even stronger claim and say that the remainder of both divided by $7$ is the same.
-We write this as $3a+b\equiv\_7 a+5b$, which means they share an "equivalence class", or we just say they are equivalent modulo $7$.
+We write this as $3a+b\equiv_7 a+5b$, which means they share an "equivalence class", or we just say they are equivalent modulo $7$.
 Basically, we're in a weird place where only the remainder of division by $7$ matters.
-It is $8\equiv\_7 1\equiv\_7 -6$, and the world is strange.
+It is $8\equiv_7 1\equiv_7 -6$, and the world is strange.
 Maybe you've [heard](https://www.youtube.com/watch?v=tRaq4aYPzCc) of [$p$-adic numbers](https://en.wikipedia.org/wiki/P-adic_number#p-adic_integers) or a [quotient ring](https://en.wikipedia.org/wiki/Quotient_ring) before.
 If I remember my first year of uni correctly, that's the construct we're talking about here.
 Don't be worried if those terms make no sense to you, we will cover what we need.
@@ -186,7 +186,7 @@ What if $b$ is like $2$ and doesn't cleanly divide by $3$?
 We're going to have to familiarise ourselves with a new concept in quotient ring:
 division works differently here.
 Instead of dividing by a number, we have to find the element to multiply with to get $1$.
-Or in other words, given a number $x$, we want to find a number $y$ with $x\cdot y\equiv\_7 1$.
+Or in other words, given a number $x$, we want to find a number $y$ with $x\cdot y\equiv_7 1$.
 We also say that $y=x^{-1}$.
 But isn't this just division with extra steps?
 How can we find an element to multiply with to get $1$ without having the element be like $1/x$?
@@ -194,7 +194,7 @@ Aren't we only working on integers?
 Remember that we're in a quotient ring.
 In the case of $3$, let's just look at all the options.
 
-| Counter-piece | Product | $\equiv\_7$ |
+| Counter-piece | Product | $\equiv_7$ |
 |---------------|---------|-------------|
 | $3\cdot 1$    | $3$     | $3$         |
 | $3\cdot 2$    | $6$     | $6$         |
@@ -206,7 +206,7 @@ In the case of $3$, let's just look at all the options.
 
 We can see that $5$ is the only element that results in $1$.
 In fact, it is a property of quotient rings that are based on prime numbers that such an element must always exist, and this fact is often used in Cryptography like [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)) and others.
-And if we look at some examples: $5\cdot 6 = 30$ and $30\equiv\_7 2$ .
+And if we look at some examples: $5\cdot 6 = 30$ and $30\equiv_7 2$ .
 This seems to be working.
 Feel free to look at some other examples, but you can think of it like the factor $3$ in whatever number we're dividing being instead set to a multiple of $7$, which is equivalent to a factor of $1$.
 

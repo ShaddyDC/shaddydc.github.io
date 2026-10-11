@@ -2,6 +2,7 @@
 title = "search completion explored"
 date = 2025-03-01T19:25:49+01:00
 description = "are tries truly the right tool for the job or will a kv store do?"
+math = true
 tags = [
 "algos", "programming", "data structures"
 ]
@@ -46,7 +47,7 @@ our kv store also gets a new combination for each, so now 26^2 extra times 3
 
 so i guess to generalise for a max query length of $n$:
 
-trie: $$\sum_{i=1}^n 26^i\cdot\mathrm{ptr size}$$
+trie: $$\sum_{i=1}^n 26^i\cdot\text{ptr size}$$
 
 kv: $$\sum_{i=1}^n 26^i\cdot i$$
 
